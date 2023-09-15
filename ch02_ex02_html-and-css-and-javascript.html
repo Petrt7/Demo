@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HTML & CSS</title>
+	<link href="_assets/css/main.css" rel="stylesheet">
+</head>
+<body>
+<main>
+<div id="example-info" class="center section">
+	<h1 id="example-title" class="section-title">HTML & CSS & Javascript</h1>
+	<p id="example-filename">ch02_ex02_html-and-css-javascript.html</p>
+</div>
+<div class="section">
+	<h2 class="section-title center">HTML</h2>
+	<p class="section-body">HTML: HyperText Markup Language / 超文本標記語言</p>
+	<p class="section-body">以下為一 HTML 範例, 反應本範例中標題部分</p>
+	<div class="code-container section-body">
+		<code>
+			&lt;div&gt;<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1  id="example-title" class="section-title"&gt;HTML & CSS & Javascript&lt;/h1&gt;<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&lt;p  id="example-filename"&gt;ch02_ex02_html-css-javascript.html&lt;/p&gt;<br>
+			&lt;/div&gt;
+		</code>
+	</div>
+	<ul class="section-body">
+		<li>HTML 的基本語法是將用 opening tag (如&lt;div&gt;, &lt;h1&gt;, &lt;p&gt;) 跟 closing tag (如&lt;/div&gt;, &lt;/h1&gt;, &lt;/p&gt;)包住文本</li>
+		<li>有些 element 可以包含其他 element。此行為稱為 nesting。如上例中 div 包含了 h1 及 p, 此時該 div 為 h1 及 p 的親元素; h1 及 p 為 div 的子元素; h1 與 p 互為手足元素 (siblings)</li>
+	</ul>
+	<div class="code-container section-body">
+		<code>
+			&lt;div id="example-info" class="center section"&gt;<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;HTML & CSS & Javascript&lt;/h1&gt;<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;ch02_ex02_html-css-javascript.html&lt;/p&gt;<br>
+			&lt;/div&gt;
+		</code>
+	</div>
+	<ul class="section-body">
+		<li>id: 一個元素特有的識別屬性</li>
+		<li>class: 多個元素特有的識別屬性</li>
+	</ul>
+</div>
+<div class="section">
+	<h2 class="section-title center">CSS</h2>
+	<div class="flex-container">
+		<div id="css-code-wrapper">
+			<textarea class="editor"></textarea>
+		</div>
+		<div id="css-render-wrapper">
+			<div id="container-1" class="container">
+				#container-1
+				<div class="box">
+					.box
+					<div class="box">.box</div>
+				</div>
+			</div>
+			<div id="container-2" class="container">
+				#container-2
+				<div class="box">
+					.box
+					<div class="box">.box</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<h2 class="section-title center">Javascript</h2>
+	<p class="section-body">請見檔案 &lt;script&gt;</p>
+</div>
+</main>
+<style id="example-css">
+	#container-1 {
+		background-color: pink;
+	}
+	#container-2 {
+		background-color: skyblue;
+	}
+	.container {
+		padding: 10px;
+	}
+	.box {
+		width: 200px;
+		height: 200px;
+		padding: 10px;
+		border: 2px solid;
+	}
+	.box > .box {
+		width: 100px;
+		height: 100px;
+	}
+	#container-1 .box {
+		background-color: red;
+	}
+	.blue {
+		color: blue;
+	}
+	.blue:hover {
+		background-color: #fff;
+	}
+</style>
+<script src="_assets/js/ch2ex2.js"></script>
+<script>
+	/*
+		1.
+		Javascript 中寫 comment 有兩種方法:
+		一種是區塊 comment, 將多行文字用乘號跟斜線包起來,
+		快捷鍵為 option + shift + a
+	*/
+	// 第二種是單行 comment, 在單行文字前加上雙斜線, 快捷鍵為 ctrl + /
+	// 在 VS Code 中使用快捷鍵時，記得要切換成英文輸入法
+	
+	console.log("Hello, World!"); // console.log() 可以在開發者工具中的 console 欄位印出訊息
+
+	/*
+		2.
+		Javascript 的執行時機
+		
+		「原則上」由上到下, 由左至右
+		但由於 Javascript 的互動性, 有些程式碼會在被指定的時機才執行
+	*/
+	console.log("第二行");
+
+	let a = document.getElementById('container-1'); // 選擇 id 為 container-1的元素, 並儲存於變數 a 中
+	a.addEventListener('click', function(){
+		console.log('#container-1 is clicked');
+	});
+	
+	console.log("最後一行");
+</script>
+</body>
+</html>

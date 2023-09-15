@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>陣列 / Array</title>
+    <link href="_assets/css/main.css" rel="stylesheet">
+</head>
+
+<body>
+    <main>
+        <section id="example-info" class="center">
+            <h1 id="example-title" class="section-title">陣列 / Array</h1>
+            <p id="example-filename">ch03_ex05_array.html</p>
+        </section>
+        <section>
+            <p class="section-body">Array 是 Object 的特例 (subclass/子類別), 語法為:</p>
+            <table class="section-body center">
+                <tr class="blue">
+                    <td class="small"></td>
+                    <td class="small">0</td>
+                    <td class="small">1</td>
+                    <td class="small">2</td>
+                    <td class="small"></td>
+                </tr>
+                <tr>
+                    <td class=""><code>[</code></td>
+                    <td class=""><code>value1,</code></td>
+                    <td class=""><code>value2,</code></td>
+                    <td class=""><code>value3</code></td>
+                    <td class=""><code>]</code></td>
+                </tr>
+            </table>
+        </section>
+        <section>
+            <h2 class="section-title center">範例</h2>
+            <div class="code-container section-body">
+                <code>
+                let myFavoriteCreatures = [ "Ape", "Bee", "Cat" ];<br>
+                console.log(myFavoriteCreatures[1]); // Bee<br>
+                console.log(myFavoriteCreatures.length); // 3<br>
+            </code>
+            </div>
+            <p class="section-body">與物件相比可發現, 陣列的語法中並沒有 key。事實上是陣列的 key 是由 0 開始的整數, 且在語法中被省略了</p>
+        </section>
+        <section>
+            <h2 class="section-title center">方法及屬性</h2>
+            <p class="section-body">請參考 &lt;script&gt;</p>
+        </section>
+    </main>
+    <script>
+        /*
+            0.
+            陣列 / Array
+            Object 的特例 (subclass/子類別)
+            與 Object 不同的是 key 固定為從 0 開始的連續整數
+            在宣告時, 也無需將 key 打出來
+            
+            範例如下: 
+        */
+        let myFavoriteCreatures = ["Ape", "Bee", "Cat"];
+        let b;
+        console.log('myFavoriteCreatures = ');
+        console.log(myFavoriteCreatures);
+
+        /*
+            1. 
+            陣列的型態為 object
+            陣列與
+        */
+        // console.log('typeof myFavoriteCreatures = ' + typeof myFavoriteCreatures);
+        /*
+            2. 
+            陣列與字串相加時, 陣列會被轉換成字串 "Ape,Bee,Cat"
+            與直接 console.log(myFavoriteCreatures) 有所不同
+        */
+        // console.log('我最喜歡的動物的前三名是 ' + myFavoriteCreatures);
+
+        /*
+            3.
+            陣列的 method 及 property:
+        */
+        /*  
+            3-1.
+            length 
+        */
+        // console.log("array.length 為 array 的長度");
+        // console.log("myFavoriteCreatures.length = " + myFavoriteCreatures.length);
+
+        /* 
+            3-2.
+            [n]
+        */
+        // console.log("array[n] 為 array 第 n 項");
+        // console.log("myFavoriteCreatures[1] = " + myFavoriteCreatures[1]);
+
+        /* 
+            3-3.
+            push()
+            array.push(item) 會將 item 新增到陣列後面, 並回傳陣列長度;
+        */
+        // b = myFavoriteCreatures.push("Dog");
+        // console.log(myFavoriteCreatures);
+        // console.log("b = " + b);
+
+        /* 
+            3-4.
+            unshift()
+            array.unshift(item) 會將 item 新增到陣列前面, 並回傳陣列長度;
+        */
+        // console.log("練習: array.unshift()");
+        // 輸入你的 code...
+        // console.log(myFavoriteCreatures);
+
+
+        /* 
+            3-5.
+            shift()
+            array.shift() 會移除陣列中第一個 item, 並回傳被移除的 item
+        */
+        // console.log("練習: array.shift()");
+        // 輸入你的 code...
+        // console.log(myFavoriteCreatures);
+
+        /* 
+            3-6.
+            pop()
+            array.pop() 會移除陣列中最後一個 item, 並回傳被移除的 item
+        */
+        // console.log("練習: array.pop()");
+        // 輸入你的 code...
+        // console.log(myFavoriteCreatures);
+
+        // let moreCreatures = ["Elephant", "Fox"];
+        /* 
+            3-7.
+            concat()
+            array.concat(array2) 會回傳一陣列, 此陣列為 array 加上 array2
+            array 跟 array2 會保持原狀
+        */
+        // let allCreatures = myFavoriteCreatures.concat(moreCreatures);
+        // console.log("練習: array.concat(array2)");
+        // console.log(allCreatures);
+        // console.log(myFavoriteCreatures);
+        // console.log(moreCreatures);
+
+        /* 
+            3-8.
+            join()
+            array.join(glue) 中的 glue 為一字串, 此方法會回傳一字串, 其值為所有 item 用 glue 連接 (黏) 起來
+        */
+        // console.log("我最喜歡的動物有: ");
+        // console.log(myFavoriteCreatures.join(" 和 "));
+
+        /* 
+            3-9.
+            includes()
+            array.includes(item) 回傳一布林值, 若陣列中有 item, 回傳 true; 否則回傳 false
+            關於 if 陳述式, 詳見 Ch. 4 陳述式的部分
+        */
+        function isThisMyFavoriteCreature(item, list) {
+            if (list.includes(item)) {
+                console.log(item + " 是我最喜歡的動物之一");
+            }
+            else {
+                console.log(item + " 不是我最喜歡的動物之一");
+            }
+        }
+        // isThisMyFavoriteCreature("Cat", myFavoriteCreatures);
+        // isThisMyFavoriteCreature("Fox", myFavoriteCreatures);
+
+        /* 
+            3-10.
+            indexOf()
+            array.indexOf(item) 回傳陣列中第一個值為 value 的 item 的位置, 若無則回傳 -1
+        */
+        function rankMyFavoriteCreature(item, list) {
+            let rank = list.indexOf(item);
+            if (rank == -1) {
+                console.log(item + " 不是我最喜歡的動物之一");
+            }
+            else {
+                console.log(item + " 是我第 " + rank + " 喜歡的動物"); // 直接印 rank 出來合理嗎?
+            }
+        }
+        // rankMyFavoriteCreature("Cat", myFavoriteCreatures);
+        // rankMyFavoriteCreature("Zebra", myFavoriteCreatures);
+
+        /* 
+            3-11.
+            lastIndexOf()
+            array.lastIndexOf(item) 回傳陣列中最後一個值為 value 的 item 的位置, 若無則回傳 -1
+        */
+        // let myFavoriteCreatures2 = ["Ape", "Bee", "Cat", "Bee"];
+        // console.log("myFavoriteCreatures2.lastIndexOf('Bee') = " + myFavoriteCreatures2.lastIndexOf('Bee'));
+        // console.log("myFavoriteCreatures2.indexOf('Bee') = " + myFavoriteCreatures2.indexOf('Bee'));
+
+        /* 
+            3-12.
+            slice()
+            array.slice(index1[, index2]) 回傳一新陣列, 新陣列內容是原陣列從 index1 的 item 開始, index2 為非必要的參數
+            - 若沒有 index2, 則切到 array 最後一個 item
+            - 若有 index2, 則切到 index2 前一個 item (位於 index2 的 item 本身不會被切進新陣列)
+            - 若 index1, index2 為負數, 則從後面開始算, 最後一位是 -1
+            - index2 要大於 index1, 否則回傳空陣列
+        */
+        // myFavoriteCreatures.push("Dog");
+        // console.log(myFavoriteCreatures);
+        // console.log("myFavoriteCreatures.slice(1), 即去掉第一項的 myFavoriteCreatures = ");
+        // console.log(myFavoriteCreatures.slice(1));
+        // console.log("myFavoriteCreatures.slice(0, 2), 即 myFavoriteCreatures 的前兩項 = ");
+        // console.log(myFavoriteCreatures.slice(0, 2));
+        // console.log("myFavoriteCreatures.slice(-2), 即 myFavoriteCreatures2 的後兩項 = ");
+        // console.log(myFavoriteCreatures.slice(-2));
+        // console.log("myFavoriteCreatures.slice(-2, -1), 即 myFavoriteCreatures 的倒數第二項 = ");
+        // console.log(myFavoriteCreatures.slice(-2, -1));
+        // console.log("如果 index2 比 index1 小...?");
+        // console.log(myFavoriteCreatures.slice(3, 2));
+    </script>
+</body>
+
+</html>

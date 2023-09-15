@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>變數與常見的資料型態</title>
+	<link href="_assets/css/main.css" rel="stylesheet">
+</head>
+<body>
+<main>
+<section id="example-info" class="center">
+	<h1 id="example-title" class="section-title">變數與常見的資料型態</h1>
+	<p id="example-filename">ch03_ex01_variable-and-datatype.html</p>
+</section>
+<section>
+	<p class="section-body">變數用於儲存資料, 讓該資料能於多處使用, 並在必要時統一更新</p>
+	<ul class="section-body">
+		<li>var: 最早的宣告方式, 最為"鬆散"</li>
+		<li>let: 較晚加入 (ES6, 2015)</li>
+		<li>const:  較晚加入 (ES6, 2015)</li>
+	</ul>
+</section>
+<section>
+	<p class="section-body">Javascript 中常見的資料型態有:</p>
+	<ul class="section-body">
+		<li>字串 / String: 由雙引號或引號包夾的值。如 "a", 'b', "1", "2", "3"</li>
+		<li>數字 / Number: 0 到 9 組成的整數，如 1, 2, 3。也可以有小數, 如 0.1, 0.2, 0.3</li>
+		<li>布林 / Boolean: true 或 false</li>
+		<li>未定義 / Undefined: 值只有一種, 即 undefined</li>
+	</ul>
+</section>
+</main>
+<script>
+	let a = "Hello"; // let 是用來宣告變數的關鍵字. = 是指把右側的值指派給左邊的變數
+	/*
+		1.
+		變數用於儲存資料, 讓該資料能於多處使用, 並在必要時統一更新
+	*/
+	
+	// a = "Hi"; // ok. 用 let 宣告的變數的值可以被改變
+	// a = 1; // ok. Javascript 中不用規定變數的資料型態. 變數的值可以由字串(string)改變成數字(number)
+	// let a = 'Hey'; // 不 ok. 用 let 宣告過的變數名稱不能再被使用
+	
+	/* 
+		2.
+		變數的好處: 多處使用
+	*/
+	// console.log(a + ' World!');
+	// console.log(a + ' class!');
+
+	/* 
+		3.
+		變數的好處: 統一更新
+	*/
+	// a = "Hey";
+	// console.log(a + ' World!');
+	// console.log(a + ' class!');
+</script>
+</body>
+</html>

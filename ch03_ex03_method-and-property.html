@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>方法(Method)及屬性(Property)</title>
+    <link href="_assets/css/main.css" rel="stylesheet">
+</head>
+
+<body>
+    <main>
+        <section id="example-info" class="center">
+            <h1 id="example-title" class="section-title">方法(Method)及屬性(Property)</h1>
+            <p id="example-filename">ch03_ex03_method-and-property.html</p>
+        </section>
+        <section>
+            <h2 class="section-title">方法(Method)</h2>
+            <ul class="section-body">
+                <li>String, Number 等 Datatype 有各種預設的 function, 讓我們能對資料進行操作。例如把 String 變成全部大寫, 或把 String 切割</li>
+                <li>此類 function 稱為「方法 / method」</li>
+            </ul>
+        </section>
+        <section>
+            <h2 class="section-title">屬性(Property)</h2>
+            <ul class="section-body">
+                <li>String, Number 等 Datatype 有各種預設的變數, 用來表示資料的狀態。例如 String 有多少字數</li>
+                <li>此類變數稱為「屬性 / property」</li>
+            </ul>
+        </section>
+    </main>
+</body>
+<script>
+    /*
+        方法 / Method
+        String, Number 等 Datatype 有各種預設的 function, 讓我們能對資料進行操作。
+        例如把 String 變成全部大寫, 或把 String 切割
+        此類屬於某種資料型態的 function 稱為方法 / method
+        
+        屬性 / Property
+        String, Number 等 Datatype 有各種預設的變數, 用來表示資料的狀態。
+        例如 String 有多少字數
+        此類描述某種資料型態的變數稱為屬性 / property
+
+        取得屬性的語法: string.propertyName
+        呼叫方法的語法: string.methodName()
+    */
+
+    let a = "Hello, World";
+    console.log("a = " + a);
+
+    /* 
+        1.
+        length
+    */
+    // console.log("a.length 為字串的字元數");
+    // console.log("a.length = " + a.length);
+
+    /* 
+        2.
+        [n]
+    */
+    console.log("a[n] 為字串中第 n 個字元 (第一個字元的 n 為 0)");
+    console.log("a[5] = " + a[5]);
+
+    /* 
+        3.
+        toUpperCase()
+    */
+    // console.log("a.toUpperCase() 回傳一新字串, 其值為原字串英文變成全部大寫");
+    // console.log("a.toUpperCase() = " + a.toUpperCase());
+
+    /* 
+        4. 
+        toLowerCase()
+    */
+    // console.log("a.toLowerCase() 回傳一新字串, 其值為原字串英文變成全部小寫");
+    // console.log("a.toLowerCase() = " + a.toLowerCase());
+
+    /* 
+        5.
+        indexOf()
+    */
+    // console.log("a.indexOf() 回傳字串中第一個 str1 的位置");
+    // console.log("a.indexOf('o') = " + a.indexOf("o"));
+    // console.log("a.indexOf('or') = " + a.indexOf("or"));
+
+    /* 
+        6.
+        lastIndexOf()
+    */
+    // console.log("a.lastIndexOf() 回傳字串中第一個 str1 的位置");
+    // console.log("a.lastIndexOf('o') = " + a.lastIndexOf("o"));
+
+    /* 
+        7.
+        slice()
+    */
+    // console.log("a.slice(indexStart[, indexEnd]) 回傳一新字串");
+    // console.log("若沒有indexEnd, 新字串值是原字串從 indexStart 開始到最後")
+    // console.log("a.slice(7) = " + a.slice(7));
+    // console.log("若有 indexEnd, 新字串值是原字串從 indexStart 開始到 indexEnd 前一個字元");
+    // console.log("a.slice(0, 5) = " + a.slice(0, 5));
+    // console.log("若與給負值, 則從最後面開始算 (最後一個字元的位置為 -1)");
+    // console.log("a.slice(-3) = " + a.slice(-3));
+
+    /* 
+        練習1.
+        請試著用 a.slice() 印出
+        1. "Hello"
+        2. "World"
+    */
+
+
+    /* 
+       練習2. 
+       請寫出一個能在 console 印出 email 使用者名稱 (@前的字串) 的 function
+       提示: 運用 indexOf() 跟 slice()
+   */
+    let email1 = 'admin@example.com';
+    let email2 = 'info@example.com';
+    let email3 = 'wjeoiqjweiqjewqwejqw@example.com';
+
+    function printEmailUsername(email) {
+        let output = email;
+        console.log(output);
+    }
+
+    printEmailUsername(email1); // 寫完別忘了呼叫 function 才會看到結果
+
+</script>
+</body>
+
+</html>

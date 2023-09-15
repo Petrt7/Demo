@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>函式 / Function</title>
+    <link href="_assets/css/main.css" rel="stylesheet">
+</head>
+<body>
+<main>
+<section id="example-info" class="center">
+    <h1 id="example-title" class="section-title">函式 / Function</h1>
+    <p id="example-filename">ch03_ex02_function.html</p>
+</section>
+<section>
+    <p class="section-body">Function 能將一組程式包起來, 讓這組程式能被重複使用/呼叫 (call)</p>
+    <p class="section-body">宣告 function:</p>
+    <div class="code-container section-body">
+        <code>function myFunction(){</code><br>
+        <code><span class="indent-level-1"></span>console.log("Hello");</code><br>
+        <code>}</code>
+    </div>
+    <p class="section-body">呼叫 function:</p>
+    <div class="code-container section-body">
+        <code>myFunction();</code>
+    </div>
+    <p class="section-body">每次呼叫 myFunction 時, console.log("Hello"); 就會執行一次</p>
+</section>
+<section>
+    <h2 class="section-title">進階範例</h2>
+    <p class="section-body">在這個範例, 我們會學到怎麼用 javascript 取得表單物件 input 的值</p>
+    <div class="section-body">
+        <label for="userNameInput">請輸入你的姓名: </label><input id="userNameInput" type="text" placeholder="name">
+        <button id="trigger">呼叫 sayHelloToVisitor()</button>
+    </div>
+</section>
+</main>
+<script>
+    /*
+        1.
+        Function 能將一組程式包起來, 讓這組程式能被重複使用/呼叫 (call)
+        下面是宣告及呼叫 (call, 即使用) function 的方式:
+    */
+    function myFunction(){
+        console.log("Hello");
+        // 更多程式碼...
+    };
+
+    // myFunction(); // 呼叫 function
+ 
+    /* 
+        2. 
+        function 也可以接收參數 (parameters), 
+        讓它的功能更靈活
+    */
+    // function sayHelloToVisitor(name){
+    //     // name 可以想成是只在這個 function 的大括弧內存在的變數
+    //     // 參數不一定要叫 name, 只要符合變數命名規則即可
+    //     console.log("Hello, " + name);
+    // };
+    // let visitorName = "Alice";
+    // sayHelloToVisitor(visitorName);
+    // sayHelloToVisitor("Brian");
+    // sayHelloToVisitor();
+
+    /* 
+        3. 
+        參數也可以給予預設值, 當沒有資料傳入時, 就會使用這個變數值
+    */
+    // function sayHelloToVisitor(name = "Stranger"){
+    //     console.log("Hello, " + name);
+    // };
+    // sayHelloToVisitor(); // Hello, Stranger
+    // sayHelloToVisitor("Alice"); // Hello, Alice
+
+    /* 
+        4. 
+        函式的參數也可以是另一個函式
+    */
+    // function A( name="Stranger" ) {
+    //     console.log("Hello, " + name);
+    // }
+    // function B( f ) {
+    //     f( "John" );
+    //     console.log("Welcome to the javascript class. ");
+    // }
+    // B( A ); // 此行不能寫成 B( A() )
+
+
+    /*
+        5. 
+        使用 function 時, 應避免直接使用此 function 外定義的變數
+        如要使用, 應將變數用參數的方式傳進去, 以免變數被「污染」
+        當我們在 function 中寫更複雜的程式碼時, 需要對資料進行許多操作、更改
+        用參數的方式傳進去可以避免原本定義的變數被更改
+
+        以下是不好的例子
+    */
+    // let name = "Alice";
+    // function sayHelloToVisitor(){
+    //     console.log("Hello, " + name);
+    // };
+
+    /*
+        6.
+        return 這個關鍵字可以值當成 output 回傳。
+        因此理想的做法是讓 function 接受 input, 
+        回傳 output 給原變數 (或定義新變數來儲存該值)
+
+        注意! 當 function 中的程式碼跑到 return 這個關鍵字時便會停止, 不會執行以下的程式碼
+    */
+    // function getSayHelloMessage(name){
+    //     console.log("getSayHelloMessage() 第一行");
+    //     let output = "Hello, " + name;
+    //     return output;
+    //     console.log("getSayHelloMessage() 最後一行");
+    // };
+
+    // let message = "Alice";
+    // message = getHelloMessage( message );
+    // console.log( message );
+
+    /*
+        進階範例
+        在這個範例, 我們會學到怎麼用 javascript 取得表單物件 input 的值
+    */
+    function sayHelloToVisitor(name = "Stranger"){
+        console.log("按下 #trigger");
+        console.log("Hello, " + name)
+    }
+    // let trigger = document.querySelector("#trigger"); // 選擇 id 為 trigger 的 元素
+    // let input = document.querySelector("#userNameInput"); // 選擇 id 為 userNameInput 的 元素
+    // console.log("input 的值為" + input.value);
+    trigger.addEventListener('click', function(){
+        sayHelloToVisitor(input.value);
+    });
+
+</script>
+</body>
+</html>

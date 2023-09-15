@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>資料型態: 物件 / Object</title>
+	<link href="_assets/css/main.css" rel="stylesheet">
+</head>
+<body>
+<main>
+    <section id="example-info" class="center">
+        <h1 id="example-title" class="section-title">資料型態: 物件 / Object</h1>
+		<p id="example-filename">ch03_ex04_object.html</p>
+	</section>
+	<section>
+		<p class="section-body">物件 / Object 是一種資料型態, 它能夠同時儲存複數個、不同資料型態的值
+		</p>
+	</section>
+	<section>
+		<h2 class="section-title center">物件的例子: 汽車</h2>
+		<p class="section-body">從實體物件的角度來想像物件, 以一輛車為例:</p>
+		<div class="image-wrapper section-body"><img src="_assets/images/car.webp"></div>
+		<p class="section-body">
+			一輛汽車有各種變數, 稱為「屬性」 (property)<br>例如: 型號、重量、顏色、哩程<br><br>
+			一輛汽車有各種功能, 稱為「方法」(method)<br>例如: 啟動、前進、煞車、熄火
+		</p>
+	</section>
+	<section>
+		<h2 class="section-title center">語法</h2>
+		<div class="section-body code-container">
+			<table class="section-body center">
+				<tr class="blue">
+					<td class="small"></td><td class="small">key</td><td class="small">value</td><td class="small"></td>
+				</tr>
+				<tr>
+					<td class=""><code>{</code></td><td class=""><code>color:</code></td><td class=""><code>white,</code></td><td class=""><code></code></td>
+				</tr>
+				<tr>
+					<td class=""><code></code></td><td class=""><code>miles:</code></td><td class=""><code>100,</code></td><td class=""><code></code></td>
+				</tr>
+				<tr>
+					<td class=""><code></code></td><td class=""><code>weight:</code></td><td class=""><code>850kg,</code></td><td class=""><code>}</code></td>
+				</tr>
+			</table>
+		</div>
+		<ul class="section-body">
+			<li>object 的 property 和 method 的形式為 key-value pair<br>
+				key 即屬性或方法的名稱, 如 color, miles<br>
+				value 即屬性或方法的值, 如 "white", 100 ( 或 method 對應的 function )</li>
+			<li>名稱與值間以冒號連結</li>
+			<li>key-value pair 間以逗號分開</li>
+			<li>名稱可以用引號包著, 也可以不用</li>
+		</ul>
+	</section>
+	<section>
+		<h2 class="section-title center">物件的例子: 幻燈片</h2>
+		<p class="section-body">另一個符合網站實際應用的物件例子為商業網站上常見到的幻燈片</p>
+		<div class="image-wrapper section-body"><img src="_assets/images/slideshow.png"></div>
+		<p class="section-body">
+			幻燈片可能有的屬性: <br>
+			所有圖片的 url
+			目前在第幾張投影片
+			<br><br>
+			幻燈片可能有的方法: <br>
+			跳到下一張圖片 (在點擊向右的箭頭時呼叫)<br>
+			跳到前一張圖片 (在點擊向右的箭頭時呼叫)<br>
+			跳到第 n 張圖片 (在點擊小圓圈時呼叫)
+		</p>
+	</section>
+</main>
+<script>
+	/*
+		物件 / Object
+		物件--簡單來說--是多個資料的集合
+		我們可以把多個資料儲存到一個物件中
+
+		從實體物件的角度來想像物件, 以一輛車為例: 
+		一輛汽車有各種屬性 (property)
+		例如: 型號、重量、顏色、哩程
+		一輛汽車有各種功能, 稱為「方法」(method)
+		例如: 啟動、前進、煞車、熄火
+
+		Object 的每一個屬性或方式都是一個 key-value pair
+		key 指該屬性或方法的名稱, value 是屬性的值或方法的 function
+		範例如下: 
+	*/
+	let car = {
+		// 屬性 / property
+		'model': '2023 Coroll',
+		'weight': '1340.36kg',
+		'color': 'white',
+		'miles': 100,
+		// 方法 / method
+		'start': function(){ console.log("啟動") },
+    	'drive': function(){ console.log("前進") }, 
+		'brake': function(){ console.log("煞車") },
+		'stop': function(){ console.log("熄火") },
+	}
+
+	console.log(car.color); // 取得屬性
+	console.log(car['color']); // 取得屬性
+	car.start(); // 呼叫方法
+</script>
+</body>
+</html>
