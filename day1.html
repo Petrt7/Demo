@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Day1</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+    <button id="button">按我</button>
+    <script>
+        function sayhello(name = "stranger") {
+            console.log(name);
+        }
+        let a = document.getElementById('button');
+        a.addEventListener('click', sayhello('Alice'));
+    </script>
+</body>
+
+</html>
