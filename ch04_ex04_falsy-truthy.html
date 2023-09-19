@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Javascript 中的真偽</title>
+	<link href="_assets/css/main.css" rel="stylesheet">
+</head>
+<body>
+<main>
+<section id="example-info" class="center">
+	<h1 id="example-title" class="section-title">Javascript 中的真偽</h1>
+	<p id="example-filename">ch04_ex04_falsy-truthy.html</p>
+</section>
+<section>
+	<p class="section-body">在 Javascript 中, 有五個值不是 false, 但在被判斷真偽時會被判成 false</p>
+	<p class="section-body">這五個值&mdash;加上 false 本身一共六個值&mdash;被稱為 falsy values</p>
+	<ul class="section-body">
+		<li>布林值的 false</li>
+		<li>數字的 0</li>
+		<li>字串的 "" (空字串)</li>
+		<li>undefined</li>
+		<li>null</li>
+		<li>NaN (Not a Number)</li>
+	</ul>
+	<p class="section-body">在 Javascript 中, falsy value 外的值都是 truthy value</p>
+</section>
+</main>
+<script>
+	let a;
+	/*
+		1. 
+		Javascript 的 falsy value 有六個: 
+		false, 0, "", undefined, null, NaN
+		Javascript 中 falsy value 以外的值全都是 truthy value
+		if(), while() 括弧都是依 truthy 或 falsy 來判斷
+	*/
+	function truthyOrFalsy(input){
+		// if 陳述式是與 truthy / falsy value 最相關的陳述式
+		// 關於 if 陳述式, 請參照講義第四章陳述式的內容
+		if(input) {
+			console.log(input + ' 是 truthy value');
+		} else {
+			console.log(input + ' 是 falsy value');
+		}
+	}
+	truthyOrFalsy('');
+	truthyOrFalsy(0);
+	truthyOrFalsy('0');
+	truthyOrFalsy('string' * 6);
+	truthyOrFalsy(a);
+	truthyOrFalsy([]);
+	truthyOrFalsy({});		
+</script>
+</body>
+</html>

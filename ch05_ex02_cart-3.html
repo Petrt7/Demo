@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>商城範例 (3)</title>
+    <link href="_assets/css/main.css" rel="stylesheet">
+    <link href="_assets/css/cart.css" rel="stylesheet">
+</head>
+
+<body>
+    <main>
+        <section id="example-info" class="center">
+            <h1 id="example-title" class="section-title">商城範例 (3)</h1>
+            <p id="example-filename">ch05_ex02_cart-3.html</p>
+        </section>
+        <div id="shop-container">
+            <div id="products-container">
+                <div class="product" id="product-1">
+                    <div class="product-thumbnail-wrapper"><img class="product-thumbnail"
+                            src="_assets/images/harryPotter-1.webp"></div>
+                    <div class="product-name">哈利波特: 神秘的魔法石</div>
+                    <div class="product-price-wrapper"><span class="product-price">250</span> 元</div>
+                    <button productId="1" class="add-to-cart-button">加入購物車</button>
+                </div>
+                <div class="product" id="product-2">
+                    <div class="product-thumbnail-wrapper"><img class="product-thumbnail"
+                            src="_assets/images/harryPotter-2.webp"></div>
+                    <div class="product-name">哈利波特: 消失的密室</div>
+                    <div class="product-price-wrapper"><span class="product-price">280</span> 元</div>
+                    <button productId="2" class="add-to-cart-button">加入購物車</button>
+                </div>
+                <div class="product" id="product-3">
+                    <div class="product-thumbnail-wrapper"><img class="product-thumbnail"
+                            src="_assets/images/harryPotter-3.webp"></div>
+                    <div class="product-name">哈利波特: 阿茲卡班的逃犯</div>
+                    <div class="product-price-wrapper"><span class="product-price">299</span> 元</div>
+                    <button productId="3" class="add-to-cart-button">加入購物車</button>
+                </div>
+            </div>
+            <div id="cart-container">
+                <div id="added-products-container">
+                    <div class="added-product">
+                        <span class="added-product-title">商品名稱</span>
+                        <span class="added-product-price">價格</span>
+                    </div>
+                </div>
+                <div>購物車內有 <span id="amount">0</span> 項商品</div>
+                <div>總計 <span id="subtotal">0</span> 元</div>
+            </div>
+            <button href="checkout.html">確認商品並結帳</button>
+    </main>
+    <script>
+        /*
+            商城範例
+        */
+        let products = [
+            {
+                'id': 1,
+                'title': '哈利波特: 神秘的魔法石',
+                'price': 250,
+                'thumbnail': '_assets/images/harryPotter-1.webp'
+            },
+            {
+                'id': 2,
+                'title': '哈利波特: 消失的密室',
+                'price': 280,
+                'thumbnail': '_assets/images/harryPotter-2.webp'
+            },
+            {
+                'id': 3,
+                'title': '哈利波特: 阿茲卡班的逃犯',
+                'price': 299,
+                'thumbnail': '_assets/images/harryPotter-3.webp'
+            }
+        ];
+        let shop = {
+            'allProducts': [],
+            'addToCartButtons': document.getElementsByClassName('add-to-cart-button'),
+            'cartToggle': null, // 選擇 #cart-toggle
+            'productsContainer': null, // 選擇 #products-container  
+            'checkoutButton': null, // 先不用選
+            'cart': {
+                'items': [],  // 加入購物車的商品的 id
+                'subtotal': 0, // 加入購物車的商品的總價
+                'amount': 0    // 加入購物車的商品的數量
+            },
+            // 這裡了init扮演constructor的角色
+            'init': function (allProducts) {
+                this.allProducts = allProducts;
+                this.addListeners();
+            },
+            'addListeners': function () {
+                /* 
+                    1. 
+                    按下 this.addToCartButtons 的每個按鈕時, 執行 this.updateCart()
+                    如果出現錯誤, 試著在 addEventListener 的無名函式中印出 this 看看
+                */
+                for (let i = 0; i < this.addToCartButtons.length; i++) {
+                    // this.addToCartButtons[i].addEventListener("click", function () {
+                    //     this.updateCart();
+                    //     console.log(this);
+                    //     現在的this並非shop物件而是button本身,因為現在這個function是按鈕本身的function,而非shop的function()
+                    // });
+                    //     解決方法:
+                    //     1.寫function的時候用箭頭函式:this.addToCartButtons[i].addEventListener("click", () => this.updateCart());
+                    //     2.在function的}後面加上.bind(this)
+                    //     3.shop.updateCart();->這個不好如果今天shop物件要改名function也要跟著改
+                    this.addToCartButtons[i].addEventListener("click", () => this.updateCart());
+
+                }
+            },
+            'updateCart': function (p_id) {
+                console.log("updateCart()");
+                console.log(this.cart);
+            },
+            'submit': function () {
+                console.log("cart.submit()");
+            },
+        }
+        shop.init(products);
+    </script>
+</body>
+
+</html>

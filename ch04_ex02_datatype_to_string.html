@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>字串 / String 的相加</title>
+	<link href="_assets/css/main.css" rel="stylesheet">
+</head>
+
+<body>
+	<main>
+		<section id="example-info" class="center">
+			<h1 id="example-title" class="section-title">字串 / String 的相加</h1>
+			<p id="example-filename">ch04_ex02_datatype_to_string.html</p>
+		</section>
+		<section>
+			<p class="section-body">在 Javascript 中, 當字串與非字串相加時, 非字串的資料會先被轉換成字串</p>
+			<table class="section-body">
+				<tr>
+					<td> 字串 + </td>
+					<td> a = </td>
+					<td> console.log(a) </td< /tr>
+				<tr>
+					<td> 字串 </td>
+					<td> "Hey " + "World"</td>
+					<td> Hey World </td< /tr>
+				<tr>
+					<td> 數字 </td>
+					<td> "10" + 3 </td>
+					<td> 103 </td< /tr>
+				<tr>
+					<td> 布林 </td>
+					<td> "Hey " + true </td>
+					<td> Hey true </td< /tr>
+				<tr>
+					<td> 未定義 </td>
+					<td> "Hey " + b </td>
+					<td> Hey undefined </td< /tr>
+				<tr>
+					<td> 陣列 </td>
+					<td> "Hey " + ["Apple", "Banana"] </td>
+					<td> Hey Apple,Banana </td< /tr>
+				<tr>
+					<td> 物件 </td>
+					<td> "Hey " + { a: 1, b: 2 } </td>
+					<td> Hey [Object object] </td< /tr>
+			</table>
+		</section>
+	</main>
+	<script>
+		let a = "Hey";
+		let b = "10";
+		console.log("a = " + a);
+		console.log("b = " + b);
+		/*
+			1.
+			String 間的相加會把兩個字串直接接在一起
+			至今我們在 console.log() 中使用很多次
+		*/
+		console.log("a + ' World' = " + a + ' World');
+
+
+		/* 
+			2.
+			String 與其他資料型相加時, 非字串的資料會先被轉換成字串
+		*/
+		let aNumber = 1;
+		let anotherNumber = 2;
+		let anUndefined;
+		let anObject = { a: 1, b: 2 };
+		let anArray = ["Apple", "Banana"];
+		function aFunction() {
+			console.log("aFunction()");
+		};
+
+		console.log('b + aNumber = ' + b + aNumber);
+		console.log('aNumber + anotherNumber = ' + aNumber + anotherNumber); // 程式碼是由左至右執行
+		console.log('aNumber + anotherNumber = ' + (aNumber + anotherNumber));
+		// console.log('a + anUndefined = ' + (a + anUndefined));
+		// console.log('a + anObject = ' + (a + anObject));
+		// console.log('a + anArray = ' + (a + anArray));
+		console.log('a + aFunction = ' + (a + aFunction));
+	</script>
+</body>
+
+</html>

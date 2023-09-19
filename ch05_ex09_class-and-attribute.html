@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Element Object 的 Class 與 Attribute</title>
+	<link rel="stylesheet" href="_assets/css/main.css">
+</head>
+<body>
+<main>
+<section id="example-info" class="center">
+	<h1 id="example-title" class="section-title">Element Object 的 Class 與 Attribute</h1>
+	<p id="example-filename">ch05_ex09_class-and-attribute.html</p>
+</section>
+<section>
+	<h2>夜間模式</h2>
+	<p>夜間模式（英語：night mode）有時亦叫做黑暗模式（black mode）或者深色模式（Light-on-dark color scheme），是一種高對比度，或者反色模式的螢幕顯示模式。</p>
+	<h3>興起原因</h3>
+	<p>由於現在的資訊科技生活，很多人要長時間使用電腦、手機、電視、平板電腦等電子產品，由於長時間閱覽白底黑字的文件或者介面，會使眼睛感到不適，長此以往會造成視力受損。</p>
+	<p>夜間模式亦可以減少搭載OLED屏幕的設備的耗電量，延長手機使用時間。有些人甚至在白天都打開設備的夜間模式。</p>
+	<h3>歷史</h3>
+	<p>早在1991年，蘋果電腦的System 7 OS作業系統，就為視覺敏感的用戶提供了黑底白字的深色顯示模式功能，當時蘋果電腦把它叫做CloseView。Windows 95亦提供了類似的高對比度顯示模式，並且在之後Windows的版本得到延續，用戶可以自己設置系統操作界面的顏色。</p>
+	<p>早期的夜間模式會比較簡單地直接反色，但後來就開始出現了比較多的精心設計的夜間模式，除了黑底白字之外，有還會對圖片與影片的顯示進行改良。例如2012年，Google Chrome發布了高對比度插件，除了黑底白字的模式，還提供灰度模式、反轉模式、黑底黃字等不同的模式。截至2017年，YouTube和Android系統都相繼推出夜間模式。</p>
+	<p>另外，蘋果在iOS 9.3亦新增了名為Night Shift的夜間模式，以黃光取代藍光，這樣會令用戶感到更為舒服。Night Shift甚至會根據當地日落與日出的時間來自動調節。</p>
+	<h3>問題</h3>
+	<p>很多手機／電腦軟體的夜間模式，都用黃光取代藍光，但2019年英國曼徹斯特大學就進行了一項研究，比較老鼠對於藍光與黃光的反應，他們認為在夜間開黃光的護眼模式，反而更會影響人對日夜的認知[4]。也有研究人員認為夜間模式無助於睡眠。</p>
+	<div id="dark-mode-toggle"></div>
+	<button id="high-contrast-toggle">高對比模式</button>
+</section>
+</main>
+	<style>
+		body{
+			background-color: #aaff00;
+		}
+		body[high-contrast="on"]{
+			background-color: #fff;
+		}
+		body[high-contrast="on"] h2,
+		body[high-contrast="on"] h3
+		{
+			color: #000
+		}
+		#dark-mode-toggle
+		{
+			position: fixed;
+			top: 10px;
+			right: 20px;
+			height: 50px;
+			width: 50px;
+			background-image: url(_assets/moon-6-k.svg);
+			background-size: cover;
+			cursor: pointer;
+		}
+		#high-contrast-toggle
+		{
+			position: fixed;
+			top: 20px;
+			right: 70px;
+		}
+		h2, h3
+		{
+			color: blue;
+		}
+		h3
+		{
+			border-bottom: 1px solid;
+		}
+
+		body.dark-mode
+		{
+			color: #fff;
+			background-color: #000;
+		}
+
+		body.dark-mode h2,
+		body.dark-mode h3
+		{
+			color: yellow;
+		}
+
+		body.dark-mode #dark-mode-toggle
+		{
+			background-image: url(_assets/moon-6-w.svg);
+		}
+	</style>
+	<script>
+		/*
+			呼叫出一個 element 的 classList 後, 你可以用
+			add("newClass")
+			remove("oldClass")
+			toggle("aClass")
+			來更改一個 element 的 css class
+		*/
+		let sDark_mode_toggle = document.getElementById('dark-mode-toggle');
+		sDark_mode_toggle.addEventListener('click', function(){
+			document.body.classList.add('dark-mode');
+		});
+
+		/*
+			element.getAttribute("attributeName") 可以取得一個屬性的值
+			element.setAttribute("attributeName", "value") 可以給予一個屬性新值
+
+			以上兩個 method 主要是針對自訂的屬性
+			HTML 固有屬性如 id, <img> 的 src, <input> 的 value 是可以直接用 = 給予新值的
+			例如 element.id = 'newId';
+		*/
+		let sHigh_contrast_toggle = document.getElementById('high-contrast-toggle');
+		sHigh_contrast_toggle.addEventListener('click', function(){
+			if(document.body.getAttribute('high-contrast') == 'on')
+				document.body.setAttribute('high-contrast', 'off')
+			else
+				document.body.setAttribute('high-contrast', 'on')
+		});
+
+	</script>
+</body>
+</html>

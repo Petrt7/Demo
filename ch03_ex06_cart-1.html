@@ -1,82 +1,134 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>商城範例 (1)</title>
     <link href="_assets/css/main.css" rel="stylesheet">
     <link href="_assets/css/cart.css" rel="stylesheet">
 </head>
-<body>
-<main>
-<section id="example-info" class="center">
-    <h1 id="example-title" class="section-title">商城範例 (1)</h1>
-    <p id="example-filename">ch03_ex06_cart-1.html</p>
-</section>
-<div id="product-container">
-    <div class="product" id="product-1">
-        <div class="product-thumbnail-wrapper"><img class="product-thumbnail" src="_assets/images/harryPotter-1.webp"></div>
-        <div class="product-name">哈利波特: 神秘的魔法石</div>
-        <div class="product-price-wrapper"><span class="product-price">250</span> 元</div>
-        <button class="add-to-cart-button">加入購物車</button>
-    </div>
-    <div class="product" id="product-2">
-        <div class="product-thumbnail-wrapper"><img class="product-thumbnail" src="_assets/images/harryPotter-2.webp"></div>
-        <div class="product-name">哈利波特: 消失的密室</div>
-        <div class="product-price-wrapper"><span class="product-price">280</span> 元</div>
-        <button class="add-to-cart-button">加入購物車</button>
-    </div>
-    <div class="product" id="product-3">
-        <div class="product-thumbnail-wrapper"><img class="product-thumbnail" src="_assets/images/harryPotter-3.webp"></div>
-        <div class="product-name">哈利波特: 阿茲卡班的逃犯</div>
-        <div class="product-price-wrapper"><span class="product-price">299</span> 元</div>
-        <button class="add-to-cart-button">加入購物車</button>
-    </div>
-    <button class="print-submit-button" onclick="cart.submit();">結帳</button>
-</div>
-<script>
-	/*
-		商城範例
-        此範例僅是展示物件/Object 用法, 尚無任何功能
-	*/
-    let products = [
-        {
-            'title': '哈利波特: 神秘的魔法石',
-            'price': 250
-        },
-        {
-            'title': '哈利波特: 消失的密室',
-            'price': 280
-        },
-        {
-            'title': '哈利波特: 阿茲卡班的逃犯',
-            'price': 299
-        }
-    ];
 
-    let cart = {
-        'allProducts': products,
-        'addedProducts': [],
-        'productsAmount': 0,
-        'subtotal': 0,
-        'addToCartButtons': document.getElementsByClassName('add-to-cart-button'), 
-        'addToCart': function(){
-            console.log("cart.addToCart()");
-            // 將商品加入購物車
-        },
-        'updateSubtotal': function(){
-            console.log("cart.updateSubtotal()");
-            // 更新目前的小計
-        },
-        'updateProductsAmount': function(){
-            console.log("cart.updateProductsAmount()");
-            // 更新目前的商品數量
-        },
-        'submit': function(){
-            console.log("cart.submit()");
-            // 送出購物車的資料, 結帳...
-        }
-    }
-    console.log(cart.addToCartButtons);
-    console.log(cart.addToCartButtons[0]);
-</script>
+<body>
+    <main>
+        <section id="example-info" class="center">
+            <h1 id="example-title" class="section-title">商城範例 (1)</h1>
+            <p id="example-filename">ch03_ex06_cart-1.html</p>
+        </section>
+        <div id="product-container">
+            <div class="product" id="product-1">
+                <div class="product-thumbnail-wrapper"><img class="product-thumbnail"
+                        src="_assets/images/harryPotter-1.webp"></div>
+                <div class="product-name">哈利波特: 神秘的魔法石</div>
+                <div class="product-price-wrapper"><span class="product-price">250</span> 元</div>
+                <button class="add-to-cart-button">加入購物車</button>
+            </div>
+            <div class="product" id="product-2">
+                <div class="product-thumbnail-wrapper"><img class="product-thumbnail"
+                        src="_assets/images/harryPotter-2.webp"></div>
+                <div class="product-name">哈利波特: 消失的密室</div>
+                <div class="product-price-wrapper"><span class="product-price">280</span> 元</div>
+                <button class="add-to-cart-button">加入購物車</button>
+            </div>
+            <div class="product" id="product-3">
+                <div class="product-thumbnail-wrapper"><img class="product-thumbnail"
+                        src="_assets/images/harryPotter-3.webp"></div>
+                <div class="product-name">哈利波特: 阿茲卡班的逃犯</div>
+                <div class="product-price-wrapper"><span class="product-price">299</span> 元</div>
+                <button class="add-to-cart-button">加入購物車</button>
+            </div>
+            <button class="print-submit-button" onclick="cart.submit();">結帳</button>
+        </div>
+        <script>
+            /*
+                商城範例
+                此範例僅是展示物件/Object 用法, 尚無任何功能
+            */
+            let products = [
+                {
+                    'title': '哈利波特: 神秘的魔法石',
+                    'price': 250
+                },
+                {
+                    'title': '哈利波特: 消失的密室',
+                    'price': 280
+                },
+                {
+                    'title': '哈利波特: 阿茲卡班的逃犯',
+                    'price': 299
+                }
+            ];
+
+            let cart = {
+                'allProducts': products,
+                'addedProducts': [],
+                'productsAmount': 0,
+                'subtotal': 0,
+                'addToCartButtons': document.getElementsByClassName('add-to-cart-button'),
+                'addToCart': function () {
+                    console.log("cart.addToCart()");
+                    // 將商品加入購物車
+                    console.log
+                },
+                'updateSubtotal': function () {
+                    console.log("cart.updateSubtotal()");
+                    // 更新目前的小計
+                },
+                'updateProductsAmount': function () {
+                    console.log("cart.updateProductsAmount()");
+                    // 更新目前的商品數量
+                },
+                'submit': function () {
+                    console.log("cart.submit()");
+                    // 送出購物車的資料, 結帳...
+                }
+            }
+            console.log(cart.addToCartButtons);
+            console.log(cart.addToCartButtons[0]);
+
+            let add = document.getElementsByClassName("add-to-cart-button")
+            a.addEventListener("click", function () {
+
+            })
+
+
+        </script>
 </body>
+
 </html>
+
+<!-- // 在 'addToCart' 方法中，根據點擊的按鈕所在的商品區塊，找到相應的商品並添加到購物車
+'addToCart': function (clickedButton) {
+    console.log("cart.addToCart()");
+
+    // 找到商品區塊（clickedButton 的父級元素）
+    const productElement = clickedButton.closest(".product");
+    if (!productElement) {
+        console.error("Product element not found.");
+        return;
+    }
+
+    // 獲取商品區塊的相關信息
+    const productId = productElement.getAttribute("id");
+    const productTitle = productElement.querySelector(".product-name").textContent;
+    const productPrice = parseFloat(productElement.querySelector(".product-price").textContent);
+
+    // 創建商品對象
+    const productToAdd = {
+        'title': productTitle,
+        'price': productPrice
+    };
+
+    // 將商品添加到購物車
+    this.addedProducts.push(productToAdd);
+    this.updateSubtotal();
+    this.updateProductsAmount();
+}
+
+// 添加點擊事件監聽器到每個 "加入購物車" 按鈕
+for (let i = 0; i < this.addToCartButtons.length; i++) {
+    this.addToCartButtons[i].addEventListener("click", function (event) {
+        cart.addToCart(event.target);
+    });
+} -->
+
+<!-- Live token: eec1e2cdb3eef9204a8ee7df511baad619d701c268a101f9bc44c7a97276eead
+Sandbox token: 0bd2145cf8a231c5258fef0fe42ea237a7e04906822a72b8176ea780c92bcb50 -->

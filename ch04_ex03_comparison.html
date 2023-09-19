@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>比較運算子</title>
+	<link href="_assets/css/main.css" rel="stylesheet">
+</head>
+<body>
+<main>
+<section id="example-info" class="center">
+	<h1 id="example-title" class="section-title">比較運算子</h1>
+	<p id="example-filename">ch04_ex03_comparison.html</p>
+</section>
+<section>
+	<p class="section-body">見 &lt;script&gt;</p>
+</section>
+</main>
+<script>
+	/* 
+		1.
+		等於 ==, 不等於 !=, 嚴格等於 ===, 嚴格不等於 !==
+		比較兩個值是否「相等」, 並回傳布林值
+		Javascript 中的「相等」, 分為相等跟嚴格相等
+	*/
+	/*
+		1.1
+		同資料型態間的等於
+	*/
+	console.log('"apple" == "apple" ? ' + "apple" == "apple");
+	console.log('0 == 1 ? ' + 0 == 1); // 程式碼的執行是由左至右
+	/*
+		1.2
+		不同資料型態間的等於
+		Javascript 的鬆散邏輯會產生一些較不直觀的結果
+	*/
+	// console.log('false == 0 ? ' + (false == 0));
+	// console.log('0 == "0" ? ' + (0 == "0"));
+	// console.log('"0" == false ? ' + ("0" == false));
+
+	/* 
+		2.
+		大於 >, 小於 <, 大於等於 >= 小於等於 <=
+		這些比大小的運算子用於兩個數字間, 其邏輯跟一般數學相同
+	*/
+	// console.log("1 > 2 ? " + (1 > 2));
+	
+	/* 
+		3.
+		這些比大小的運算子用於兩個 String 間, 會比較字元的 Unicode
+	*/
+	// console.log('"A" > "B" ? ' + ("A" > "B"));
+	// console.log('"App" < "Apple" ? ' + ("App" < "Apple"));
+	// console.log('"apple" < "Apple" ? ' + ("apple" < "Apple")); // a 的 Unicode 為 0061, A 的 Unicode 為 0041
+</script>
+</body>
+</html>

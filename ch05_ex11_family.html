@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HTML 元素的 parent, child, sibling</title>
+	<link rel="stylesheet" href="_assets/css/main.css">
+</head>
+<body>
+<main>
+<section id="example-info" class="center">
+	<h1 id="example-title" class="section-title">HTML 元素的 parent, child, sibling</h1>
+	<p id="example-filename">ch05_ex11_family.html</p>
+</section>
+<section>
+	<div id="parent">
+		0<div id="div1">1<span>2</span></div>3<p id="p1">4</p>
+	</div>
+	<button id="trigger">按鈕</button>
+</section>
+</main>
+	<style>
+		body{
+			font-size: 20px;
+		}
+		div{
+			border: 1px solid;
+			padding: 10px;
+		}
+		span{
+			background-color: yellow;
+			padding: 10px;
+		}
+		p
+		{
+			
+			border: 1px solid red;
+			padding: 10px;
+		}
+		#trigger{
+			margin-top: 20px;
+			font-size: 24px;
+		}
+	</style>
+	<script>
+		let a = document.getElementById("div1");
+		/*
+			DOM node 有一系列 property 讓開發者直接呼叫與之有「親屬關係」的 node
+			*element 也是一種 node*
+
+			a.parentNode
+			a.parentElement
+			a.childNodes
+			a.children
+			a.firstChild
+			a.firstChildElement
+			a.lastChild
+			a.lastChildElement
+			a.nextSibling
+			a.nextElementSibling
+			a.previousSibling
+			a.previousElementSibling
+
+			我們也可以用之前學過的 querySelector(), querySelectorAll()
+			來選取 a 之下的 descendant element
+			
+			a.querySelector()
+			a.querySelectorAll()
+
+			*getElementById() 跟 getElementsByClassName() 只有 document 能用*
+		*/
+		
+		/*
+			DOM node 有一系列 method 讓開發者能新增, 插入, 移除 node
+		*/
+
+			let b = document.createElement("DIV");
+			let c = document.createElement("P");
+			
+			// a.appendChild(b)                 // 將 b 從後加入 a 中
+			// a.replaceChild(c, b)             // 將 b 換成 c, b 必須要是 a 的子node
+			// a.insertBeforeChild(b, c)        // 將 b 插到 c 的前面, c 必須要是 a 的子node
+			// let d = a.cloneNode();           // 複製一個 a, 若傳入 true 為參數代表連子node都複製
+			// let e = a.cloneNode(true);       // 若傳入 true 為參數代表連子node都複製
+			// console.log(d);
+			// console.log(e);
+			// a.remove()                       // 移除 a
+			// a.removeChild(c)                 // 移除 a 的子node c
+			console.log(a);
+			
+		/*
+			試著用按鈕來觸發以上 method 或印出 property
+		*/
+		let sTrigger = document.getElementById("trigger");
+		sTrigger.addEventListener("click", function(){});
+
+		/*
+			練習
+			如果要將 b 加到 a 中, 且 b 要是第一個 child, 該怎麼做?
+		*/
+	</script>
+</body>
+</html>

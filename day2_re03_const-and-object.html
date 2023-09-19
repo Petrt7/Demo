@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>宣告變數: const (和 object)</title>
+    <link href="_assets/css/main.css" rel="stylesheet">
+</head>
+
+<body>
+    <main>
+        <section id="example-info" class="center">
+            <h1 id="example-title" class="section-title">宣告變數: const (和 object)</h1>
+            <p id="example-filename">day2_re03_const-and-object.html</p>
+        </section>
+        <section>
+            <p class="section-body">請見 &lt;script&gt;</p>
+        </section>
+    </main>
+    <script>
+        const a = 'a';
+        /*
+            1.
+            const 所宣告的變數, 其值無法改變
+        */
+        // a = 'b';
+        // console.log(a);
+
+        /*
+            2. 
+            當 const 的值是 object 時...?
+        */
+        const b = {
+            'key1': 'value1',
+            'key2': 'value2'
+        }
+        b['key1'] = 123;
+        console.log(b);
+
+        /*
+            Javascript 中的值分為 primitive value 跟非 primitive value
+            primitive value 可以理解為「初階的值」, 包括:
+            string, number, boolean, undefined
+    
+            非 primitive value 包括:
+            Object (不含 null), array, function
+        */
+        /*
+            2.1 
+            變數可以想像成值的「容器」
+            當你將一個 primitive value 指派給變數時, 就像把這個值裝進容器中
+        */
+        /*
+            2.2
+            當你將一個非 primitive value 指派給變數時, 只有這個值的 reference 被裝進容器
+            reference 為指向這個非 primitive value 在記憶體中位置的「座標」
+            當你改變 b 的任何屬性或方法時, 並不會改變這個 reference, 所以即使 b 是由 const 宣告的也不會丟出錯誤
+        */
+
+        let c = b; // 此時傳給 c 的為物件的 reference
+        c['key1'] = 'abc';
+        console.log(b);
+
+        let d = {
+            'key1': 'abc',
+            'key2': 'value2'
+        }; // d 為重新宣告的物件, 與 b 完全無關
+        d['key1'] = '789';
+        console.log(d);
+        console.log(b);
+
+    </script>
+</body>
+
+</html>

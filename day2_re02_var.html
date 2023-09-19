@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>宣告變數: var</title>
+	<link href="_assets/css/main.css" rel="stylesheet">
+</head>
+<body>
+<main>
+<section id="example-info" class="center">
+	<h1 id="example-title" class="section-title">宣告變數: var</h1>
+	<p id="example-filename">day2_re02_var.html</p>
+</section>
+<section>
+	<p class="section-body">請見 &lt;script&gt;</p>
+</section>
+</main>
+<script>
+	/*
+        0. var
+        var 是 javascript 最早的宣告變數方式, 且維持逾 20 年 (2015 時才有其他宣告變數方式)
+        以下將展示一些 var 的特殊行為
+    */
+    console.log(a);
+    /*
+        1. 執行時機
+        我們之前說過 Javascript 的執行時機是:
+            1「原則上」由上至下, 從左到右
+            2 函式內的程式碼在函式被呼叫時才會執行
+        事實上還有一規則, 就是用 var 宣告變數的指令會優先被執行 (但不包含賦予值的指令)
+    */
+    var a = 'a';
+    console.log(a);
+
+    /*
+        2. var 可以重複定義同樣名稱的變數
+        以下 var 若換成 let 或 const 會出現錯誤
+    */
+    // var a = 'abc';
+    // var a = 123;
+
+    /*
+        3. for (i = 0; i < max; i++) { ... }
+        當看到 for 迴圈時, 我們會討論更多 var 的行為
+    */
+</script>
+</body>
+</html>

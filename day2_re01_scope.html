@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>作用域 Scope</title>
+    <link href="_assets/css/main.css" rel="stylesheet">
+</head>
+
+<body>
+    <main>
+        <section id="example-info" class="center">
+            <h1 id="example-title" class="section-title">作用域 Scope</h1>
+            <p id="example-filename">day2_re01_scope.html</p>
+        </section>
+        <section>
+            <p class="section-body">請見 &lt;script&gt;</p>
+        </section>
+    </main>
+    <script>
+        /*
+            作用域 scope 是指變數的有效範圍
+            javascript 有四種 scope
+            1. global scope
+            2. function scope
+            3. block scope
+            (4. module scope)
+        */
+        /*
+            1. global scope
+            任何外連的 .js 檔案及 <script> 標籤中的程式碼
+            var, let, const 宣告的變數都適用
+        */
+        let a = 'a';
+
+        /*
+            2. function scope
+            函式的 {} 中
+            var, let, const 宣告的變數都適用
+        */
+        // function aFunction(p) {
+        //     let b = 'b';
+        //     console.log(a); // a 的有效域為 global, 任何地方都可使用
+        //     console.log(b);
+        // }
+        // aFunction();
+        // console.log(b); // b 是在 function 中宣告的, 無法其 {} 外使用
+        // console.log(p); // p 是 function 的參數, 無法其 {} 外使用
+
+        /*
+            3. block scope
+            if, while 等陳述式的 {} 之間
+            以 let 跟 const 宣告的變數才會受限於 block scope，其他的如var就不會
+        */
+        // if(1 == 1) {
+        //     let c = 'hello';
+        // }
+        // console.log(c); // c 是以 let 宣告, 且存在於 {} 之間的變數, 無法在該 {} 外使用
+
+    </script>
+</body>
+
+</html>

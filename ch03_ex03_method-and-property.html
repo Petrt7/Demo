@@ -1,33 +1,30 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <title>方法(Method)及屬性(Property)</title>
     <link href="_assets/css/main.css" rel="stylesheet">
 </head>
-
 <body>
-    <main>
-        <section id="example-info" class="center">
-            <h1 id="example-title" class="section-title">方法(Method)及屬性(Property)</h1>
-            <p id="example-filename">ch03_ex03_method-and-property.html</p>
-        </section>
-        <section>
-            <h2 class="section-title">方法(Method)</h2>
-            <ul class="section-body">
-                <li>String, Number 等 Datatype 有各種預設的 function, 讓我們能對資料進行操作。例如把 String 變成全部大寫, 或把 String 切割</li>
-                <li>此類 function 稱為「方法 / method」</li>
-            </ul>
-        </section>
-        <section>
-            <h2 class="section-title">屬性(Property)</h2>
-            <ul class="section-body">
-                <li>String, Number 等 Datatype 有各種預設的變數, 用來表示資料的狀態。例如 String 有多少字數</li>
-                <li>此類變數稱為「屬性 / property」</li>
-            </ul>
-        </section>
-    </main>
+<main>
+<section id="example-info" class="center">
+    <h1 id="example-title" class="section-title">方法(Method)及屬性(Property)</h1>
+    <p id="example-filename">ch03_ex03_method-and-property.html</p>
+</section>
+<section>
+    <h2 class="section-title">方法(Method)</h2>
+    <ul class="section-body">
+        <li>String, Number 等 Datatype 有各種預設的 function, 讓我們能對資料進行操作。例如把 String 變成全部大寫, 或把 String 切割</li>
+        <li>此類 function 稱為「方法 / method」</li>
+    </ul>
+</section>
+<section>
+    <h2 class="section-title">屬性(Property)</h2>
+    <ul class="section-body">
+        <li>String, Number 等 Datatype 有各種預設的變數, 用來表示資料的狀態。例如 String 有多少字數</li>
+        <li>此類變數稱為「屬性 / property」</li>
+    </ul>
+</section>
+</main>
 </body>
 <script>
     /*
@@ -90,7 +87,7 @@
     */
     // console.log("a.lastIndexOf() 回傳字串中第一個 str1 的位置");
     // console.log("a.lastIndexOf('o') = " + a.lastIndexOf("o"));
-
+    
     /* 
         7.
         slice()
@@ -109,25 +106,24 @@
         1. "Hello"
         2. "World"
     */
+    
 
-
-    /* 
-       練習2. 
-       請寫出一個能在 console 印出 email 使用者名稱 (@前的字串) 的 function
-       提示: 運用 indexOf() 跟 slice()
-   */
+     /* 
+        練習2. 
+        請寫出一個能在 console 印出 email 使用者名稱 (@前的字串) 的 function
+        提示: 運用 indexOf() 跟 slice()
+    */
     let email1 = 'admin@example.com';
     let email2 = 'info@example.com';
     let email3 = 'wjeoiqjweiqjewqwejqw@example.com';
 
-    function printEmailUsername(email) {
+    function printEmailUsername(email){
         let output = email;
         console.log(output);
     }
-
+    
     printEmailUsername(email1); // 寫完別忘了呼叫 function 才會看到結果
 
 </script>
 </body>
-
 </html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cookie</title>
+	<link rel="stylesheet" href="_assets/css/main.css">
+    <script src="_assets/js/cookie.js"></script>
+</head>
+<body>
+<main>
+<section id="example-info" class="center">
+	<h1 id="example-title" class="section-title">Cookie</h1>
+	<p id="example-filename">ch05_ex13_cookie.html</p>
+</section>
+<section>
+	<input id="cookie-input">
+    <button id="set-cookie-btn">將輸入的值存到 testCookie 中</button><br>
+    <button id="get-cookie-btn">印出 testCookie</button><br>
+    <button id="erase-cookie-btn">刪除 testCookie</button>
+</section>
+</main>
+<script>
+    let cookieName = "testCookie";
+    /*
+        0
+        此檔案已外連 cookie.js 
+        可以直接使用:
+        setCookie()
+        getCookie()
+        eraseCookie()
+
+        使用 cookie 時需要在 local server 環境, 因為 cookie 是根據 url 而設的
+        你的 VS code 安裝 "Live Server" 外掛來開啟你的檔案即可
+    */
+    /*
+        1.
+        setCookie(name, value, days)
+        name: cookie 的名稱
+        value: cookie 的值, 必須是字串
+        days: cookie 的壽命, 或沒指名則會在關掉瀏覽器清除 cookie
+    */
+    /* 
+        2.
+        getCookie(name)
+        name: cookie 的名稱
+    */
+    /* 
+        3.
+        eraseCookie(name)
+        name: cookie 的名稱
+    */
+</script>
+</body>
+</html>

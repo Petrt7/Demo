@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>DOM selectors 與 Click 事件</title>
+	<link rel="stylesheet" href="_assets/css/main.css">
+</head>
+
+<body>
+	<main>
+		<section id="example-info" class="center">
+			<h1 id="example-title" class="section-title">DOM selectors 與 Click 事件</h1>
+			<p id="example-filename">ch05_ex01_selectors-and-click-event.html</p>
+		</section>
+		<section>
+			<div id="box-container" class="flex-container">
+				<div id="box1" class="box">#box1.box</div>
+				<div id="box2" class="box">#box2.box</div>
+				<div id="box3" class="box">#box3.box</div>
+			</div>
+			<button id="btn-id">document.getElementById("box1")</button>
+			<button id="btn-class">document.getElementsByClassName("box")</button>
+			<button id="btn-query">document.querySelector(".box")</button>
+			<button id="btn-queryAll">document.querySelectorAll(".box")</button>
+			<button id="btn-addBox">加入 box</button>
+		</section>
+	</main>
+	<style>
+		#box-container {
+			background-color: yellow;
+		}
+
+		.box {
+			flex: 0 0 200px;
+			height: 200px;
+			margin: 20px;
+			padding: 20px;
+			border: 2px solid;
+		}
+
+		button {
+			display: block;
+			margin-top: 15px;
+			font-size: 20px;
+		}
+	</style>
+	<script>
+		let btn_addBox = document.getElementById('btn-addBox');
+		let boxContainer = document.getElementById('box-container');
+		if (btn_addBox && boxContainer) {
+			btn_addBox.addEventListener('click', function () {
+				boxContainer.innerHTML += '<div class="box">.box</div>';
+			});
+		}
+		/*
+			0. 如同 CSS, Javascript 也有 selector 來選取 HTML 元素, 並對其進行操作
+			這些 selector 有
+	
+			document.querySelector("b")
+			b 在此是 css 中的 selector, 回傳值為 object
+			如果此 selector 在 CSS 中會選到複數個 element (如 .a ), 此 method 只會回傳第一個 element
+			若 HTML 中沒有 id 為 b 的元素, 回傳 null
+		*/
+		/*
+			1. document.getElementById("b")
+			選擇一個 id 為 b 的 element, 回傳值為代表此 element 的 object
+			選擇範圍為全 HTML 元素
+			若 HTML 中沒有 id 為 b 的元素, 回傳 null
+		*/
+		let selectorId = document.getElementById("box1");
+		/*
+			2. document.getElementsByClassName("b")
+			選擇 class 為 b 的所有 element
+			選擇範圍為全 HTML 元素
+			回傳值為含有0, 1, 或複數的 element 的 HTMLCollection
+			HTMLCollection 都是 live, live 指內容會隨 HTML 動態更新
+	
+			HTMLCollection 是 object 的子類別
+			它們很像是 array, 例如都有 length, [n] 等某些屬性
+			但它們不完全是 array, 例如沒有 push() 等某些方法
+		*/
+		let selectorClass = document.getElementsByClassName('box');
+
+		/*
+			3. ancestor.querySelector("b");
+			b 為 CSS celector, 例如 #box1, .box 等等
+			選擇範圍為 ancestor 的後代元素, ancestor 不一定要是 document, 可以是任何 HTML 元素
+			只回傳第一個符合 CSS selector 的元素
+		*/
+		let selectorQuery = document.querySelector('.box');
+
+		/*
+			4. ancestor.querySelectorAll("b");
+			b 為 CSS celector, 例如 #box1, .box 等等
+			選擇範圍為 ancestor 的後代元素, ancestor 不一定要是 document, 可以是任何 HTML 元素
+			回傳所有符合 CSS selector 的元素
+		*/
+		let selectorQueryAll = document.querySelectorAll('.box');
+
+
+		/*
+			練習1.
+			用 getElementById 選取 #btn-id, #btn-class, #btn-query, #btn-queryAll
+			再用 addEventListener 讓按鈕在被按下時於 console 印出對應的 selector 結果
+			#btn-id        -> selectorId
+			#btn-class     -> selectorClass
+			#btn-query     -> selectorQuery
+			#btn-queryAll  -> selectorQueryAll
+		*/
+		let a = document.getElementById("btn-id").addEventListener("click", function () {
+			console.log(selectorId);
+		});
+		let b = document.getElementById("btn-class").addEventListener("click", function () {
+			console.log(selectorClass)
+		});
+		let c = document.getElementById("btn-query").addEventListener("click", function () {
+			console.log(selectorQuery)
+		});
+		let d = document.getElementById("btn-queryAll").addEventListener("click", function () {
+			console.log(selectorQueryAll)
+		});
+
+
+		/*
+			練習2.
+			完成練習1 後
+			  1 用按鈕印出 selectorClass, selectorQueryAll
+			  2 按下 "加入box" 的按鈕
+			  3 再次用按鈕印出 selectorClass, selectorQueryAll
+			  4 比較 1, 3 印出來的結果有何不同
+			  ->selectorClass會即時更新,但selectorQueryAll不會
+		*/
+
+	</script>
+</body>
+
+</html>

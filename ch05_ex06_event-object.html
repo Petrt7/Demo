@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Event object</title>
+	<link rel="stylesheet" href="_assets/css/main.css">
+</head>
+<body>
+<main>
+<section id="example-info" class="center">
+	<h1 id="example-title" class="section-title">Event object</h1>
+	<p id="example-filename">ch05_ex06_event-object.html</p>
+</section>
+<section>
+	<div id="div1">div1</div>
+	<div id="div2">div2</div>
+	<div id="div3" onclick = "clickEventHandler()">div3</div>
+</section>
+</main>
+<style>
+	div { padding: 40px; border: 1px solid; }
+</style>
+<script>
+	let divOne = document.getElementById("div1");
+	let divTwo = document.getElementById("div2");
+	
+	function clickEventHandler(e, param){
+		console.log('clicked');
+		console.log(e);
+		// console.log(param);
+	}
+	divOne.addEventListener("mousemove", clickEventHandler);
+	divTwo.onclick = clickEventHandler;
+	
+	/*
+		如果使用 onclick 或 addEventListener 並且要傳參數給 clickEventHandler() 呢?
+	*/
+	let a = "aParameter";
+	divOne.addEventListener("mousemove", function(event){
+		clickEventHandler(event, a);
+	});
+	divTwo.onclick = function(event){
+		clickEventHandler(event, a);
+	};
+</script>
+</body>
+</html>

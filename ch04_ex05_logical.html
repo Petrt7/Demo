@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>邏輯運算子 (及 if 陳述式)</title>
+	<link href="_assets/css/main.css" rel="stylesheet">
+</head>
+<body>
+<main>
+<section id="example-info" class="center">
+	<h1 id="example-title" class="section-title">邏輯運算子 (及 if 陳述式)</h1>
+	<p id="example-filename">ch04_ex05_logical.html</p>
+</section>
+<section>
+	<p class="section-body">邏輯運算子是用來表示「且」、「或」、「非」的運算子</p>
+</section>
+</main>
+<script>
+	/*
+		1.
+		「且」 &&
+		「或」 ||
+		用於決定兩個值的邏輯
+		
+		在 Javascript 中, 與其說是
+		condition1 && condition2
+		不如說是
+		value1 && value2
+
+		以下是較為「正常」的範例
+	*/
+	let aNumber = 5;
+	// if( aNumber < 10 && aNumber > 0 )
+	// {
+	// 	console.log("介於 10 與 0 之間");
+	// }
+	// else
+	// {
+	// 	console.log("大於等於 10 或小於等於 0");
+	// }
+
+	// if( aNumber >= 10 || aNumber <= 0 )
+	// {
+	// 	console.log("介於 10 與 0 之間");
+	// }
+	// else
+	// {
+	// 	console.log("大於等於 10 或小於等於 0");
+	// }
+
+	/*
+		2.
+		Javascript && 跟 || 並不是一定回傳 true 或 false
+		a && b: 檢查 a 是否為 falsy value, 若是則回傳 a; 否則回傳 b
+		a || b: 檢查 a 是否為 falsy value, 若是則回傳 b; 否則回傳 a
+		
+	*/
+	// console.log("\"Apple\" && \"Banana\":");
+	// console.log( "Apple" && "Banana" );
+	// console.log("\"\" && \"Banana\":");
+	// console.log( "" && "Banana" );
+	// console.log("2 || 1:");
+	// console.log( 2 || 1 );
+	// console.log("0 || 1:");
+	// console.log( 0 || 1 );
+	
+	/*
+		非 !
+		!a: 如果 a 是 falsy value, 回傳 true; 否則回傳 false;
+	*/
+	// if( ! (aNumber >= 10) )
+	// {
+	// 	console.log('不大於等於 10');
+	// }
+</script>
+</body>
+</html>

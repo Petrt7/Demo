@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>If 陳述式</title>
+	<link href="_assets/css/main.css" rel="stylesheet">
+</head>
+
+<body>
+	<main>
+		<section id="example-info" class="center">
+			<h1 id="example-title" class="section-title">If 陳述式</h1>
+			<p id="example-filename">ch04_ex06_if.html</p>
+		</section>
+		<section>
+			<div class="section-body code-container">
+				<code>if (exp1) { <br>
+			&nbsp;&nbsp;&nbsp;&nbsp;code1<br> 
+		} else if (exp2) { <br>
+			&nbsp;&nbsp;&nbsp;&nbsp;code2<br>
+		 } else (exp3) { <br>
+			&nbsp;&nbsp;&nbsp;&nbsp;code3<br>
+		 }</code>
+			</div>
+			<p class="section-body">若 exp1 為 truthy, 執行 code1<br>
+				若 exp1 為 falsy 且 exp2 為 truthy, 執行 code2<br>
+				若 exp1 和 exp2 皆為 falsy, 執行 code3<br><br>
+				else if 和 else 皆非必要</p>
+		</section>
+		<section>
+			<h1 class="section-title">範例</h1>
+			<div class="section-body">
+				<input id="grade-input" placeholder="請輸入成績" type="number">
+			</div>
+		</section>
+	</main>
+	<script>
+		function printMessageByGrade(inputElement) {
+			let grade = inputElement.value;
+			if (grade > 100 || grade < 0) {
+				return;
+			}
+			if (grade == 100) {
+				console.log("滿分!");
+			} else if (grade >= 60) {
+				console.log("恭喜及格");
+			} else {
+				console.log("明年見");
+			}
+		}
+		let gradeInput = document.getElementById("grade-input");
+		// gradeInput.value;
+		gradeInput.addEventListener('change', function () {
+			// console.log(this.value); 
+			printMessageByGrade(this);
+		});
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>for ... in 陳述式</title>
+	<link rel="stylesheet" href="_assets/css/main.css">
+</head>
+
+<body>
+	<main>
+		<section id="example-info" class="center">
+			<h1 id="example-title" class="section-title">for ... in 陳述式</h1>
+			<p id="example-filename">ch04_ex09_for-in.html</p>
+		</section>
+		<section>
+			<p class="section-body">見 &lt;script&gt;</p>
+		</section>
+	</main>
+	<script>
+		/*
+			我們已經知道要檢視 array 中每個元素, 可以用 forEach() 跟 for 迴圈
+			那如果要檢視 object 中每個元素呢?
+	
+			forEach() 是 array 這個子類別的 method, object 並沒有此 method
+			object 的 key 不是整數, 所以 for 迴圈也不行做到
+		*/
+
+		let car = {
+			// 屬性 / property
+			'model': '2023 Coroll',
+			'weight': '1340.36kg',
+			'color': 'white',
+			'miles': 100,
+			// 方法 / method
+			'start': function () { console.log("啟動") },
+			'drive': function () { console.log("前進") },
+			'brake': function () { console.log("煞車") },
+			'stop': function () { console.log("熄火") },
+			/* 
+				this 是與物件相關的一個關鍵字
+				在物件的範圍內 (即大括弧內), this 指的是此物件本身
+			*/
+			"printThis": function () {
+				console.log(this);
+			}
+		}
+
+		// for ( let prop in object)
+		// {
+		// 	console.log( "car 的 " + prop + " 是 " + object[prop] );
+		// }
+
+		for (let prop in car) {
+			console.log("car 的 " + prop + " 是 " + car[prop]);
+			// car[prop]不能改用car.prop,因為系統會去找car裡面有沒有prop這個屬性
+		}
+	</script>
+</body>
+
+</html>

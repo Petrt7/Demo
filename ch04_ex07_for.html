@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>for 陳述式</title>
+	<link href="_assets/css/main.css" rel="stylesheet">
+</head>
+
+<body>
+	<main>
+		<section id="example-info" class="center">
+			<h1 id="example-title" class="section-title">for 陳述式</h1>
+			<p id="example-filename">ch04_ex07_for.html</p>
+		</section>
+		<section>
+			<div class="code-container section-body">
+				<p><code>for( <span class="hint">let i = 0<span class="tip">(1) <br>定義 i 並給予初始值</span></span> ; <span class="hint">i < max<span class="tip">(2) <br>若 i &lt; max 為 true, 執行 code</span></span> ; <span class="hint">i++<span class="tip">(3) <br>執行完 code 後, i++, 並回到 (2)</span></span> ) { </code>
+				</p>
+				<p>
+				<div class="indent-level-1"></div><code>code</code></p>
+				<p><code>}</code></p>
+			</div>
+			<p class="section-body">for 迴圈可以讓 code 執行 max 次</p>
+		</section>
+		<section>
+			<h2 class="section-title">for 迴圈與陣列</h2>
+			<p class="section-body">for 迴圈也可以讓你檢視陣列中的每一項值, 請見 &lt;script&gt;</p>
+		</section>
+	</main>
+	<script>
+		/*
+			1.
+			使用 for 迴圈檢視陣列中的值
+		*/
+		let myFaveriteFruits = ["Apple", "Banana", "Orange"];
+		console.log("我最喜歡的水果前三名是: ");
+		for (let i = 0; i < myFaveriteFruits.length; i++) {
+			console.log((i + 1) + ". " + myFaveriteFruits[i]);
+		}
+
+		/*
+			2. 
+			雖然 i = 0 是最常見的初始值, 根據你的目的也可以做一些調整
+	
+		*/
+		// for (let i = 1; i <= 9; i++)
+		// {
+		// 	console.log('2 x ' + i + ' = ' + 2 * i);
+		// }
+
+		/*
+			3. 
+			請保持良好習慣, 在宣告 for 迴圈的計數變數時加上 let
+		*/
+		// j因為沒有寫let所以系統會預設給他var
+		for (j = 0; j < 3; j++) {
+			console.log('j = ' + j);
+		}
+		for (let i = 0; i < 3; i++) {
+			console.log('i = ' + i);
+		}
+		console.log('迴圈結束後');
+		console.log('j = ' + j);
+		console.log('i = ' + i);
+
+	</script>
+</body>
+
+</html>

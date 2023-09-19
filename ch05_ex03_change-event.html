@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Change 事件</title>
+    <link rel="stylesheet" href="_assets/css/main.css">
+</head>
+
+<body>
+    <main>
+        <section id="example-info" class="center">
+            <h1 id="example-title" class="section-title">Change 事件</h1>
+            <p id="example-filename">ch05_ex03_change-event.html</p>
+        </section>
+        <section>
+            <div class="section-body">
+                <label for="demo-textarea">textarea</label><br>
+                <textarea id="demo-textarea"></textarea>
+            </div>
+            <div class="section-body">
+                <label for="demo-input-text">input</label><br>
+                <input id="demo-input-text">
+            </div>
+            <div class="section-body">
+                <label for="demo-input-checkbox">input[type="checkbox"]</label><br>
+                <input id="demo-input-textarea" type="checkbox">
+            </div>
+            <div class="section-body">
+                <label for="demo-select">select</label><br>
+                <select id="demo-select">
+                    <option>選項 A</option>
+                    <option>選項 B</option>
+                    <option>選項 C</option>
+                </select>
+            </div>
+        </section>
+    </main>
+    <script>
+        /*
+            Change 事件是在表單物件 (textarea, input, select) 的值發生變化時觸發的事件
+        */
+        /*
+                練習
+                1. 用 selector 把 HTML 中的四個表單物件選起來
+                2. 用 for 迴圈將每個表單物件加上 change 事件, 在 change 發生時印出該表單物件的值 (value)
+            */
+        //    只用一個select
+        // let formElements = document.querySelectorAll("#demo-textarea, #demo-input-text, #demo-input-textarea, #demo-select");
+        let formElements = document.querySelectorAll("textarea, input, select");
+        for (let i = 0; i < formElements.length; i++) {
+            formElements[i].addEventListener("change", () => console.log(formElements[i].value));
+            //  console.log(?.value)
+        }
+    </script>
+</body>
+
+</html>

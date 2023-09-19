@@ -32,12 +32,12 @@
             </table>
         </section>
         <section>
-            <h2 class="section-title center">範例</h2>
-            <div class="code-container section-body">
-                <code>
-                let myFavoriteCreatures = [ "Ape", "Bee", "Cat" ];<br>
-                console.log(myFavoriteCreatures[1]); // Bee<br>
-                console.log(myFavoriteCreatures.length); // 3<br>
+            <!-- <h2 class="section-title center">範例</h2>
+            <div class="code-container section-body"> -->
+            <code>
+                <!-- let myFavoriteCreatures = [ "Ape", "Bee", "Cat" ];<br> -->
+                <!-- console.log(myFavoriteCreatures[1]); // Bee<br>
+                console.log(myFavoriteCreatures.length); // 3<br> -->
             </code>
             </div>
             <p class="section-body">與物件相比可發現, 陣列的語法中並沒有 key。事實上是陣列的 key 是由 0 開始的整數, 且在語法中被省略了</p>
@@ -59,8 +59,8 @@
         */
         let myFavoriteCreatures = ["Ape", "Bee", "Cat"];
         let b;
-        console.log('myFavoriteCreatures = ');
-        console.log(myFavoriteCreatures);
+        // console.log('myFavoriteCreatures = ');
+        // console.log(myFavoriteCreatures);
 
         /*
             1. 
@@ -173,15 +173,15 @@
             indexOf()
             array.indexOf(item) 回傳陣列中第一個值為 value 的 item 的位置, 若無則回傳 -1
         */
-        function rankMyFavoriteCreature(item, list) {
-            let rank = list.indexOf(item);
-            if (rank == -1) {
-                console.log(item + " 不是我最喜歡的動物之一");
-            }
-            else {
-                console.log(item + " 是我第 " + rank + " 喜歡的動物"); // 直接印 rank 出來合理嗎?
-            }
-        }
+        // function rankMyFavoriteCreature(item, list) {
+        //     let rank = list.indexOf(item);
+        //     if (rank == -1) {
+        //         console.log(item + " 不是我最喜歡的動物之一");
+        //     }
+        //     else {
+        //         console.log(item + " 是我第 " + rank + " 喜歡的動物"); // 直接印 rank 出來合理嗎?
+        //     }
+        // }
         // rankMyFavoriteCreature("Cat", myFavoriteCreatures);
         // rankMyFavoriteCreature("Zebra", myFavoriteCreatures);
 
@@ -194,7 +194,7 @@
         // console.log("myFavoriteCreatures2.lastIndexOf('Bee') = " + myFavoriteCreatures2.lastIndexOf('Bee'));
         // console.log("myFavoriteCreatures2.indexOf('Bee') = " + myFavoriteCreatures2.indexOf('Bee'));
 
-        /* 
+        /*
             3-12.
             slice()
             array.slice(index1[, index2]) 回傳一新陣列, 新陣列內容是原陣列從 index1 的 item 開始, index2 為非必要的參數
