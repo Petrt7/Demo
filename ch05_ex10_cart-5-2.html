@@ -24,10 +24,11 @@
                         <span class="added-product-price">價格</span>
                     </div>
                 </div>
-                <div>購物車內有 <span id="amount">0</span> 項商品</div>
-                <div>總計 <span id="subtotal">0</span> 元</div>
+                <div>購物車內有 <span id="cart-amount">0</span> 項商品</div>
+                <div>總計 <span id="cart-subtotal">0</span> 元</div>
             </div>
-            <button href="checkout.html">確認商品並結帳</button>
+            <a class="btn" href="checkout.html">確認商品並結帳</a>
+        </div>
     </main>
     <script>
         /*
@@ -55,36 +56,37 @@
         ];
         let shop = {
             'allProducts': [],
-            'addToCartButtons': [],
-            'cartToggle': null, // 選擇 #cart-toggle
-            'productsContainer': null, // 選擇 #products-container  
-            'checkoutButton': null, // 先不用選
-            'cookieName': 'cart',
+            'addToCartButtons': [], // 由於此按鈕現在是被 js 加到 HTML 中的, 稍後在 getElements() 中再選擇
+
+            'cartToggle': null, // 選擇 #cart-toggle, 即展開/關閉購物車的 button
+            'productsContainer': null, // 選擇 #products-container, 即裝有商品的 div
+            'addedProductsContainer': null, // 選擇 #added-products-container, 即裝有購物車中商品的 div
+            'cartAmount': null, // 選擇 #cart-amount, 即裝有購物車中商品數量的 span
+            'cartSubtotal': null, // 選擇 #cart-subtotal, 即裝有購物車中商品總價的 span
+
+            'checkoutButton': null, // 先不用選, 最後送出購物車中商品的按鈕
+            'cookieName': 'cartItems',
+            'urls': {
+                'getProducts': 'https://cart-handler.weihaowang.work/api/products',
+                'submit': 'https://cart-handler.weihaowang.work/api/cartHandler'
+            },
             'cart': {
                 'items': [],  // 加入購物車的商品的 id
                 'subtotal': 0, // 加入購物車的商品的總價
                 'amount': 0    // 加入購物車的商品的數量
             },
-            'init': function (allProducts) {
+            'init': function (allProducts, productsInCookie) {
                 this.allProducts = allProducts;
                 this.getElements();
                 this.renderElements();
                 this.addListeners();
+                if (productsInCookie) {
+                    // 如果有存在 cookie 的商品 id...
+                }
             },
             'renderElements': function () {
                 /*
-                    1.
-                    對 this.allProducts 使用 for 迴圈
-                    將以下商品 HTML 的模板加入 this.productsContainer 中
-                    記得將「書名」, 「縮圖」, 「價格」, 「商品id」換成正確的值 
-                */
-                /*
-                `<div class="product" id="product-`+(i+1)+`">
-                    <div class="product-thumbnail-wrapper"><img class="product-thumbnail" src="` + 縮圖 + `"></div>
-                    <div class="product-name">` + 書名 + `</div>
-                    <div class="product-price-wrapper"><span class="product-price">`+價格+`</span> 元</div>
-                    <button class="add-to-cart-button" productId = "`+商品id+`">加入購物車</button>
-                </div>`
+                    1. 
                 */
                 for (let i = 0; i < this.allProducts.length; i++) {
                     let p = this.allProducts[i];
@@ -100,13 +102,15 @@
                 this.addToCartButtons = document.getElementsByClassName('add-to-cart-button');
                 this.productsContainer = document.getElementById("products-container");
                 this.cartToggle = document.getElementById("cart-toggle");
+                this.addedProductsContainer = document.getElementById("added-products-container");
+                this.cartAmount = document.getElementById("cart-amount");
+                this.cartSubtotal = document.getElementById("cart-subtotal");
             },
             'addListeners': function () {
                 /*
-                    2.1
-                    如同前一個練習, 對 this.addToCartButtons 使用 for 迴圈 
-                    按下「加入購物車」按鈕時呼叫 this.updateCart()
-                    但這次要傳入商品id
+                    2
+                    如同前一個練習, 對 this.addToCartButtons 使用 for 迴圈,
+                    按下「加入購物車」按鈕時呼叫 this.updateCart(), 但這次要傳入商品id
                     商品 id 在 this.renderElements() 中被存為按鈕的 HTML Attribute "productId"
                     如何得到 HTML Attribute?
                 */
@@ -117,7 +121,7 @@
                     });
                 }
                 /*
-                    2.2
+                    3
                     當按下 this.cartToggle 時, body 加上 "viewing-cart" 這個 class
                     再次按下 this.cartToggle 時, body 移除 "viewing-cart" 這個 class
                     ...
@@ -125,27 +129,31 @@
                 this.cartToggle.addEventListener("click", () => {
                     document.body.classList.toggle("viewing-cart");
                 });
-
             },
+
             'updateCart': function (p_id) {
-                console.log("updateCart()");
-                console.log(p_id);
+                // console.log("updateCart()");
                 /*
-                    3.0
-                    對 allProducts 使用 for 迴圈 
+                    對 this.allProducts 使用 for 迴圈 
                 */
                 for (let i = 0; i < this.allProducts.length; i++) {
-                    /* 
-                        3.1
-                        如果 p_id 等於 this.allProducts[i] 的 id
-                        更新 this.cart.items, this.cart.subtotal, this.cart.amount
-                    */
                     if (this.allProducts[i].id == p_id) {
+                        /* 
+                            4.1
+                            如果 p_id 等於 this.allProducts[i] 的 id
+                            更新 this.cart.items, this.cart.subtotal, this.cart.amount
+                        */
+                        // let c = this.cart;
                         this.cart.items.push(p_id);
                         this.cart.subtotal += this.allProducts[i].price;
                         this.cart.amount++;
+                        /* 
+                            4.2
+                            呼叫 this.updateCartUI(), 並將商品名稱跟價格傳進去
+                        */
+                        this.updateCartUI(this.allProducts[i].title, this.allProducts[i].price);
+                        break;
                     }
-
                 }
 
                 console.log(this.cart);
@@ -159,15 +167,25 @@
                 */
                 /*
                 `<div class="added-product">
-                    <span class="added-product-thumbnail">` + 商品名稱 + `</span>
-                    <span class="added-product-title">` + 商品名稱 + `</span>
-                    <span class="added-product-price">` + 價格 + `</span>
-                </div>`
-                */
+                 <span class="added-product-thumbnail">` + 商品名稱 + `</span>
+                 <span class="added-product-title">` + 商品名稱 + `</span>
+                 <span class="added-product-price">` + 價格 + `</span>
+                 </div>`
+                 */
+                this.addedProductsContainer.innerHTML += `<div class="added-product">
+                   <span class="added-product-title">` + p_name + `</span>
+                   <span class="added-product-price">` + p_price + `</span>
+               </div>`
                 /*
                     5.2
                     更新 this.cartAmount 跟 this.cartSubtotal 的 innerText
                 */
+                this.cartAmount.innerText = this.cart.amount;
+                this.cartSubtotal.innerText = this.cart.subtotal;
+
+            },
+            'fetchProducts': function () {
+                // 從資料庫請求商品資料
             },
             'submit': function () {
                 console.log("cart.submit()");

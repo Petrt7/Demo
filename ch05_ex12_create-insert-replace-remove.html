@@ -1,48 +1,53 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>HTML 元素的 parent, child, sibling</title>
-	<link rel="stylesheet" href="_assets/css/main.css">
+    <title>HTML 元素的 parent, child, sibling</title>
+    <link rel="stylesheet" href="_assets/css/main.css">
 </head>
+
 <body>
-<main>
-<section id="example-info" class="center">
-	<h1 id="example-title" class="section-title">新增、複製、刪除 node</h1>
-	<p id="example-filename">ch05_ex12_create-insert-replace-remove.html</p>
-</section>
-<section>
-	<div class="flex-container">
-		<div id="parent">
-			<div id="div1">
-				<div id="child1" class="box">#child1.box</div>
-                <div id="child2" class="box">#child2.box</div>
-			</div>
-		</div>
-	</div><br>
-	<div id="buttons-container">
-        <button id="trigger">執行</button>
-    </div>
-</section>
-</main>
-	<style>
-		button {
-			font-size: 20px;
-			padding: 15px;
-		}
-		#div1 {
-			background-color: yellow;
+    <main>
+        <section id="example-info" class="center">
+            <h1 id="example-title" class="section-title">新增、複製、刪除 node</h1>
+            <p id="example-filename">ch05_ex12_create-insert-replace-remove.html</p>
+        </section>
+        <section>
+            <div class="flex-container">
+                <div id="parent">
+                    <div id="div1">
+                        <div id="child1" class="box">#child1.box</div>
+                        <div id="child2" class="box">#child2.box</div>
+                    </div>
+                </div>
+            </div><br>
+            <div id="buttons-container">
+                <button id="trigger">執行</button>
+            </div>
+        </section>
+    </main>
+    <style>
+        button {
+            font-size: 20px;
+            padding: 15px;
+        }
+
+        #div1 {
+            background-color: yellow;
             padding: 20px;
-		}
-		#parent
-		{
-			padding-left: 20px;
-		}
-		.box {
+        }
+
+        #parent {
+            padding-left: 20px;
+        }
+
+        .box {
             width: 100px;
             height: 100px;
             border: 1px solid #000;
             padding: 20px;
         }
+
         .circle {
             width: 100px;
             height: 100px;
@@ -50,16 +55,16 @@
             padding: 20px;
             border-radius: 50%;
         }
-	</style>
-	<script>
-		let trigger = document.getElementById('trigger');
+    </style>
+    <script>
+        let trigger = document.getElementById('trigger');
 
-		let a = document.getElementById("div1");
+        let a = document.getElementById("div1");
         let b = document.createElement("DIV");
         b.className = 'circle';
         let c = document.getElementById("child1");
         let c2 = document.getElementById("child2");
-        
+
         /*
             1. 
             a.appendChild(b)
@@ -68,7 +73,7 @@
         // trigger.addEventListener('click', function(){
         //     a.appendChild(b);
         // });
-        
+
 
         /*
             2. 
@@ -78,13 +83,13 @@
         // trigger.addEventListener('click', function(){
         //     a.replaceChild(b, c);
         // });         
-        
+
 
         /* 
             3.
             a.insertBefore(b, c)
             將 b 插到 c 的前面, c 必須要是 a 的子node
-        */ 
+        */
         // trigger.addEventListener('click', function(){
         //     a.insertBefore(b, c);
         // });        
@@ -107,18 +112,19 @@
             移除 a
             
         */
-        // trigger.addEventListener('click', function(){
+        // trigger.addEventListener('click', function () {
         //     a.remove();
         // });
-        
-        /* 
+
+        /*
             6.
             a.removeChild(c)
             移除 a 的子 node c, c 必須要是 a 的子node
         */
-        // trigger.addEventListener('click', function(){
+        // trigger.addEventListener('click', function () {
         //     a.removeChild(c);
         // });
-	</script>
+    </script>
 </body>
+
 </html>

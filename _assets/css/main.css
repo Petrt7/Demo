@@ -36,6 +36,9 @@ textarea.editor {
     background-color: #000;
     color: #eee;
 }
+button {
+    font-size: 20px;
+}
 .center {
     text-align: center;
 }

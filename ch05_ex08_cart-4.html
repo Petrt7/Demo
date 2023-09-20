@@ -67,9 +67,13 @@
             },
             'init': function (allProducts) {
                 this.allProducts = allProducts;
-                this.renderElements();
                 this.getElements();
+                this.renderElements();
                 this.addListeners();
+            },
+            'getElements': function () {
+                this.addToCartButtons = document.getElementsByClassName('add-to-cart-button');
+                this.productsContainer = document.getElementById("products-container");
             },
             'renderElements': function () {
                 /*
@@ -86,18 +90,15 @@
                     <button class="add-to-cart-button" productId = "`+商品id+`">加入購物車</button>
                 </div>`
                 */
-                for (let i = 0; i < products.length; i++) {
-                    let elemtnt = document.getElementsByClassName("shop-container")
-                    elemtnt.innerHTML += `<div class="product" id="product-` + (i + 1) + `">
-                    <div class="product-thumbnail-wrapper"><img class="product-thumbnail" src="` + products[i].thumbnail + `"></div>
-                    <div class="product-name">` + products[i].title + `</div>
-                    <div class="product-price-wrapper"><span class="product-price">`+ products[i].price + `</span> 元</div>
-                    <button class="add-to-cart-button" productId = "`+ products[i].id + `">加入購物車</button>
-                </div>`
+                for (let i = 0; i < this.allProducts.length; i++) {
+                    let p = this.allProducts[i];
+                    this.productsContainer.innerHTML += `<div class="product" id="product-` + (i + 1) + `">
+                        <div class="product-thumbnail-wrapper"><img class="product-thumbnail" src="` + p.thumbnail + `"></div>
+                        <div class="product-name">` + p.title + `</div>
+                        <div class="product-price-wrapper"><span class="product-price">`+ p.price + `</span> 元</div>
+                        <button class="add-to-cart-button" productId = "`+ p.id + `">加入購物車</button>
+                    </div>`
                 }
-            },
-            'getElements': function () {
-                this.addToCartButtons = document.getElementsByClassName('add-to-cart-button');
             },
             'addListeners': function () {
                 /*
@@ -105,6 +106,9 @@
                     如同前一個練習, 對 this.addToCartButtons 使用 for 迴圈 
                     按下「加入購物車」按鈕時呼叫 this.updateCart()
                 */
+                for (let i = 0; i < this.addToCartButtons.length; i++) {
+                    this.addToCartButtons[i].addEventListener("click", () => this.updateCart());
+                }
             },
             'updateCart': function (p_id) {
                 console.log("updateCart()");

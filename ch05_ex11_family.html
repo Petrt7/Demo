@@ -1,50 +1,71 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>HTML 元素的 parent, child, sibling</title>
 	<link rel="stylesheet" href="_assets/css/main.css">
 </head>
+
 <body>
-<main>
-<section id="example-info" class="center">
-	<h1 id="example-title" class="section-title">HTML 元素的 parent, child, sibling</h1>
-	<p id="example-filename">ch05_ex11_family.html</p>
-</section>
-<section>
-	<div id="parent">
-		0<div id="div1">1<span>2</span></div>3<p id="p1">4</p>
-	</div>
-	<button id="trigger">按鈕</button>
-</section>
-</main>
+	<main>
+		<section id="example-info" class="center">
+			<h1 id="example-title" class="section-title">HTML 元素的 parent, child, sibling</h1>
+			<p id="example-filename">ch05_ex11_family.html</p>
+		</section>
+		<section>
+			<h2 class="section-title">HTML 結構相關的屬性</h2>
+			<div class="flex-container">
+				<div id="html-demo-container" class="code-container">
+					<code>
+			&lt;div id="parent"&gt;<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;0<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&lt;div id="div1"&gt;<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&gt;2&lt;/span&gt;<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;3<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&lt;div id="div2"&gt;4&lt;/div&gt;<br>
+			&lt;/div&gt;
+			</code>
+				</div>
+				<div id="parent">
+					0
+					<div id="div1">
+						1
+						<span>2</span>
+					</div>
+					3
+					<div id="div2">4</div>
+				</div>
+			</div><br>
+			<div id="buttons-container"></div>
+		</section>
+	</main>
 	<style>
-		body{
+		button {
 			font-size: 20px;
+			padding: 15px;
 		}
-		div{
-			border: 1px solid;
-			padding: 10px;
-		}
-		span{
+
+		#div1 {
 			background-color: yellow;
-			padding: 10px;
 		}
-		p
-		{
-			
-			border: 1px solid red;
-			padding: 10px;
+
+		#parent {
+			padding-left: 20px;
 		}
-		#trigger{
-			margin-top: 20px;
-			font-size: 24px;
+
+		img {
+			width: 300px;
+			display: initial;
 		}
 	</style>
 	<script>
+		let htmlDemoContainer = document.getElementById('html-demo-container');
+
 		let a = document.getElementById("div1");
 		/*
 			DOM node 有一系列 property 讓開發者直接呼叫與之有「親屬關係」的 node
-			*element 也是一種 node*
 
 			a.parentNode
 			a.parentElement
@@ -65,37 +86,36 @@
 			a.querySelector()
 			a.querySelectorAll()
 
-			*getElementById() 跟 getElementsByClassName() 只有 document 能用*
+			(getElementById() 跟 getElementsByClassName() 只有 document 能用)
 		*/
-		
-		/*
-			DOM node 有一系列 method 讓開發者能新增, 插入, 移除 node
-		*/
+		let familyProperties = [
+			'parentNode',
+			'parentElement',
+			'childNodes',
+			'children',
+			'firstChild',
+			'firstElementChild',
+			'lastChild',
+			'lastElementChild',
+			'nextSibling',
+			'nextElementSibling',
+			'previousSibling',
+			'previousElementSibling'
+		];
 
-			let b = document.createElement("DIV");
-			let c = document.createElement("P");
-			
-			// a.appendChild(b)                 // 將 b 從後加入 a 中
-			// a.replaceChild(c, b)             // 將 b 換成 c, b 必須要是 a 的子node
-			// a.insertBeforeChild(b, c)        // 將 b 插到 c 的前面, c 必須要是 a 的子node
-			// let d = a.cloneNode();           // 複製一個 a, 若傳入 true 為參數代表連子node都複製
-			// let e = a.cloneNode(true);       // 若傳入 true 為參數代表連子node都複製
-			// console.log(d);
-			// console.log(e);
-			// a.remove()                       // 移除 a
-			// a.removeChild(c)                 // 移除 a 的子node c
-			console.log(a);
-			
-		/*
-			試著用按鈕來觸發以上 method 或印出 property
-		*/
-		let sTrigger = document.getElementById("trigger");
-		sTrigger.addEventListener("click", function(){});
+		let buttonsContainer = document.getElementById('buttons-container');
+		for (let i = 0; i < familyProperties.length; i++) {
+			buttonsContainer.innerHTML += '<button class="family-button" family-property = "' + familyProperties[i] + '">' + 'div1.' + familyProperties[i] + '</button>';
+		}
+		let familyButtons = document.getElementsByClassName('family-button');
+		for (let i = 0; i < familyButtons.length; i++) {
+			familyButtons[i].addEventListener('click', function () {
+				let prop = this.getAttribute('family-property');
+				console.log(a[prop]);
+			});
+		}
 
-		/*
-			練習
-			如果要將 b 加到 a 中, 且 b 要是第一個 child, 該怎麼做?
-		*/
 	</script>
 </body>
+
 </html>

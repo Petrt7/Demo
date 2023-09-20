@@ -1,63 +1,72 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>內容相關的 DOM 屬性</title>
 	<link rel="stylesheet" href="_assets/css/main.css">
 </head>
-<body>
-<main>
-<section id="example-info" class="center">
-	<h1 id="example-title" class="section-title">內容相關的 DOM 屬性</h1>
-	<p id="example-filename">ch05_ex07_content.html</p>
-</section>
-<section>
-	<div id="div1">A<span id="span1">B</span>
-		<style>#span1{color:blue;}</style>
-	</div>
-</section>
-<section>
-	<h2 class="section-title">更多範例</h2>
-	<p class="section-body">ch02_ex02 中的 CSS 編輯器也應用內容相關的 DOM 屬性, 請搭配外連檔案 _assets/js/ch2ex2.js 一起看</p>
-</section>
-<section>
-	<h2 class="section-title">練習: 用 innerHTML 動態加入 HTML 元素</h2>
-	<div id="box-container"></div>
-	<button id="add-box-button">按我以加入 .box</button>
-</section>
-</main>
-<style>
-	#box-container {
-		background-color: yellow;
-		padding: 20px;
-	}
-	.box {
-		width: 100px;
-		height: 100px;
-		border: 2px solid;
-		margin: 10px;
-	}
-</style>
-<script>
-	/*
-		1. 
-		內容相關的 DOM 屬性:
-		innerHTML
-		innerText
-		textContent
-	*/
-	let divOne = document.getElementById("div1");
-	console.log(divOne.innerHTML);
-	console.log(divOne.innerText);
-	console.log(divOne.textContent);
 
-	/*
-		2.
-		練習: 用 innerHTML 動態加入 HTML 元素
-		每當按下 #add-box-button 時, 將一個 div.box 加到 div#box-container 中
-	*/
-	let boxContainer = document.getElementById('box-container');
-	console.log(boxContainer.innerHTML);
-	boxContainer.innerHTML += '<div class="box"></div>';
-</script>
+<body>
+	<main>
+		<section id="example-info" class="center">
+			<h1 id="example-title" class="section-title">內容相關的 DOM 屬性</h1>
+			<p id="example-filename">ch05_ex07_content.html</p>
+		</section>
+		<section>
+			<div id="div1">A<span id="span1">B</span>
+				<style>
+					#span1 {
+						color: blue;
+					}
+				</style>
+			</div>
+		</section>
+		<section>
+			<h2 class="section-title">更多範例</h2>
+			<p class="section-body">ch02_ex02 中的 CSS 編輯器也應用內容相關的 DOM 屬性, 請搭配外連檔案 _assets/js/ch2ex2.js 一起看</p>
+		</section>
+		<section>
+			<h2 class="section-title">練習: 用 innerHTML 動態加入 HTML 元素</h2>
+			<div id="box-container"></div>
+			<button id="add-box-button">按我以加入 .box</button>
+		</section>
+	</main>
+	<style>
+		#box-container {
+			background-color: yellow;
+			padding: 20px;
+		}
+
+		.box {
+			width: 100px;
+			height: 100px;
+			border: 2px solid;
+			margin: 10px;
+		}
+	</style>
+	<script>
+		/*
+			1. 
+			內容相關的 DOM 屬性:
+			innerHTML
+			innerText
+			textContent
+		*/
+		let divOne = document.getElementById("div1");
+		console.log(divOne.innerHTML);
+		console.log(divOne.innerText);
+		console.log(divOne.textContent);
+
+		/*
+			2.
+			練習: 用 innerHTML 動態加入 HTML 元素
+			每當按下 #add-box-button 時, 將一個 div.box 加到 div#box-container 中
+		*/
+		let boxContainer = document.getElementById('box-container');
+		console.log(boxContainer.innerHTML);
+		boxContainer.innerHTML += '<div class="box"></div>';
+		let AddBoxButton = document.getElementById("add-box-button").addEventListener("click", () => boxContainer.innerHTML += '<div class="box"></div>');
+	</script>
 </body>
+
 </html>
