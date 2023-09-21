@@ -51,6 +51,7 @@ let shop = {
                             <div class="product-thumbnail-wrapper"><img class="product-thumbnail" src="` + p.thumbnail + `"></div>
                             <div class="product-name">` + p.title + `</div>
                             <div class="product-price-wrapper"><span class="product-price">`+ p.price + `</span> 元</div>
+                            <input type="text" name="number" id="number-`+ (i + 1) + `">         
                             <button class="add-to-cart-button" productId = "`+ p.id + `">加入購物車</button>
                         </div>`
         }
@@ -68,10 +69,15 @@ let shop = {
         /*
             2
         */
+
         for (let i = 0; i < this.addToCartButtons.length; i++) {
+            let a = document.getElementById("number-" + (i + 1));
             this.addToCartButtons[i].addEventListener("click", () => {
                 let productId = this.addToCartButtons[i].getAttribute("productId");
-                this.updateCart(productId);
+                for (let j = 0; j < a.value; j++) {
+                    this.updateCart(productId);
+                }
+                console.log(JSON.stringify(a));
             });
         }
         /*
@@ -97,7 +103,9 @@ let shop = {
                 /* 
                     4.1
                 */
+                for (let i = 0; i < 1; i++) {
 
+                }
                 this.cart.items.push(p_id);
                 this.cart.subtotal += this.allProducts[i].price;
                 this.cart.amount++;
