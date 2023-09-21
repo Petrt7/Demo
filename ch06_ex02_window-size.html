@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Window 的高度、寬度, 及捲軸位置</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="_assets/css/main.css">
+</head>
+
+<body>
+    <main>
+        <section id="example-info" class="center">
+            <h1 id="example-title" class="section-title">Window 的高度、寬度, 及捲軸位置</h1>
+            <p id="example-filename">ch06_ex02_window-size.html</p>
+        </section>
+        <section>
+            <div class="container section-body">
+                <p>在網路發展的這些年，網頁只能是靜態的，缺乏在瀏覽器中載入網頁後的動態行為能力。公司的創始人馬克·安德森認為HTML需要一種膠水語言，讓網頁設計師和兼職程式設計師可以很容易地使用它來組裝圖片和外掛程式之類的元件，且程式碼可以直接編寫在網頁標記中。1995年，網景招募了布蘭登·艾克，目標是把Scheme語言嵌入到Netscape
+                    Navigator瀏覽器中。但更早之前，網景已經跟昇陽合作，計劃在Netscape Navigator中嵌入Java語言，這時網景內部產生激烈的爭論。</p><br>
+                <p>網景公司管理層很快決定，最佳的方案是由艾克設計一種新的語言，其語法類似於Java，而不像Scheme或其他現存的腳本語言。為了在其他競爭提案中捍衛JavaScript這個想法，公司需要有一個可以運作的原型。艾克在1995年5月僅花了十天時間就把原型設計出來了。最初命名為Mocha，1995年9月在Netscape
+                    Navigator 2.0的Beta版中改名為LiveScript，同年12月，Netscape Navigator 2.0 Beta
+                    3中部署時被重新命名為JavaScript。當時網景公司與昇陽電腦公司組成的開發聯盟為了讓這門語言搭上Java這個程式語言「熱詞」，因此將其臨時改名為JavaScript，日後這成為大眾對這門語言有諸多誤解的原因之一。
+                </p><br>
+                <h3>微軟採納</h3><br>
+                <p>微軟公司於1995年首次推出 Internet Explorer，引發了與 Netscape 的瀏覽器大戰。微軟對Netscape
+                    Navigator直譯器進行了逆向工程，建立了JScript，以與處於市場領導地位的網景產品同台競爭。JScript也是一種JavaScript實作，這兩個JavaScript語言版本在瀏覽器端共存意味著語言標準化的缺失。發展初期，JavaScript的標準並未確定，同期就有網景的JavaScript和微軟的JScript。除此之外，微軟也在網頁技術上加入了不少專屬物件，使不少網頁使用非微軟平台及瀏覽器無法正常顯示。這導致在瀏覽器大戰期間網頁設計者通常會把「用Netscape可達到最佳效果」或「用IE可達到最佳效果」的標誌放在首頁。
+                </p><br>
+                <h3>標準化</h3><br>
+                <p>1996年11月，網景正式向ECMA（歐洲電腦製造商協會）提交語言標準。1997年6月，ECMA以JavaScript語言為基礎制定了ECMAScript標準規範ECMA-262。JavaScript成為了ECMAScript最著名的實現之一。除此之外，ActionScript和JScript也都是ECMAScript規範的實作語言。儘管JavaScript作為給非程式人員的腳本語言，而非作為給程式人員的程式語言來推廣和宣傳，但是JavaScript具有非常豐富的特性。
+                </p><br>
+                <h2>概論</h2><br>
+                <p>一般來說，完整的JavaScript包括以下幾個部分：</p><br>
+                <ul>
+                    <li>ECMAScript，描述了該語言的語法和基本物件；</li>
+                    <li>文件物件模型（DOM），描述處理網頁內容的方法和介面；</li>
+                    <li>瀏覽器物件模型（BOM），描述與瀏覽器進行互動的方法和介面。</li>
+                </ul><br>
+                <p>JavaScript的基本特點如下：</p><br>
+                <ul>
+                    <li>是一種解釋性腳本語言（代碼不進行預編譯）；</li>
+                    <li>主要用來向HTML頁面添加互動行為；</li>
+                    <li>可以直接嵌入HTML頁面，但寫成單獨的js檔案有利於結構和行為的分離。</li>
+                </ul><br>
+                <p>JavaScript常用來完成以下任務：</p><br>
+                <ul>
+                    <li>嵌入動態文字於HTML頁面；</li>
+                    <li>對瀏覽器事件作出回應；</li>
+                    <li>讀寫HTML元素；</li>
+                    <li>在資料被提交到伺服器之前驗證資料；</li>
+                    <li>檢測訪客的瀏覽器資訊；</li>
+                    <li>控制 Cookie，包括建立和修改等；</li>
+                </ul><br>
+                <h2><span class="mw-headline" id="特性">特性</span></h2><br>
+                <p>不同於伺服器端腳本語言（如PHP和ASP），JavaScript主要被作為客戶端腳本語言在使用者的瀏覽器上運行，不需要伺服器的支援。所以在早期程式設計師比較青睞於JavaScript以減少對伺服器的負擔，而與此同時在安全性上出現了問題。隨著伺服器變得強大，現在的程式員更喜歡運行於伺服器端的指令碼以保證安全，但JavaScript仍然以其跨平台、容易上手等優勢大行其道。同時，有些特殊功能（如AJAX）必須依賴JavaScript在客戶端提供支援。隨著引擎（如V8）和框架（如Node.js）的發展，以及事件驅動和異步IO等特性，JavaScript也被逐漸用來編寫伺服器端程式。
+                </p><br>
+                <p>以下是 ECMAScript 通常所實作的特性。</p><br>
+                <h3>指令式與結構化</h3><br>
+                <p>JavaScript支援許多C語言的結構化編程語法（如if條件語句、while迴圈、switch語句和do-while迴圈等），但作用域是一個例外。JavaScript在過去只支援使用var關鍵字來定義變數的函式作用域，但ECMAScript
+                    2015中加入了let關鍵字來支援塊級作用域。這意味著JavaScript現在既支援函式作用域又支援塊級作用域。JavaScript還支援自動在語句末添加分號，允許忽略語句末尾的分號。</p><br>
+                <h3>弱型別</h3><br>
+                <p>Javascript是弱型別的，這意味著變數可以被隱式轉換為另一個類型。</p><br>
+                <ul>
+                    <li>二元運算子+會把兩個運算元轉換為字串，除非兩個運算元都為數字類型。這是因為+也表示字串連接操作；</li>
+                    <li>二元運算子-會把兩個運算元轉換為數字類型；</li>
+                    <li>一元運算子，包括 + 和 -，都會把運算元轉換為數字。</li>
+                </ul><br>
+                <p>下列為變數轉換為字串的例子：</p><br>
+                <ul>
+                    <li>字串類型不變；</li>
+                    <li>數字會轉換為其字串表示；</li>
+                    <li>陣列的元素會轉換為字串，然後連接成透過逗號 , 分隔的長字串；</li>
+                    <li>其它物件會轉換為[object Object]，其中Object中該物件的建構函式名。</li>
+                </ul><br>
+                <p>類型的隱藏轉換是JavaScript受到批評的原因之一，因為隱藏轉換增加了規則的複雜度和發生錯誤的可能性。</p>
+            </div>
+        </section>
+    </main>
+    <script>
+        /*
+            在此範例中, 我們會使用 window.innerHeight, window.scrollY 來檢查使用者是否滑到網頁的底部
+            公式
+              捲軸位置 + 視窗高度 >= <body> 的高度
+              捲軸位置: window.scrollY
+              視窗高度: window.innerHeight
+              <body>的高度: document.body.offsetHeight
+            注意 body 有預設的 margin, 而 margin 不會計入 offsetHeight 中,
+            此範例中 body 的 margin 在 <style> 中被設為 0,
+            若遇到需要考慮 margin 的情況, 可以用 getComputedStyle() 來取得 margin 的值
+        */
+        window.addEventListener('scroll', function () {
+            if (window.scrollY + window.innerHeight >= document.body.offsetHeight)
+                console.log("bottom");
+        });
+        // 不要寫成下面那樣
+        // let s = window.scrollY;
+        // window.addEventListener('scroll', function(){
+        //     if(s+ window.innerHeight >= document.body.offsetHeight)
+        //         console.log("bottom");
+        // });
+    </script>
+</body>
+
+</html>

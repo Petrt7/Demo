@@ -1,53 +1,89 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>Cookie</title>
-	<link rel="stylesheet" href="_assets/css/main.css">
+    <title>Cookie</title>
+    <link rel="stylesheet" href="_assets/css/main.css">
     <script src="_assets/js/cookie.js"></script>
 </head>
-<body>
-<main>
-<section id="example-info" class="center">
-	<h1 id="example-title" class="section-title">Cookie</h1>
-	<p id="example-filename">ch05_ex13_cookie.html</p>
-</section>
-<section>
-	<input id="cookie-input">
-    <button id="set-cookie-btn">將輸入的值存到 testCookie 中</button><br>
-    <button id="get-cookie-btn">印出 testCookie</button><br>
-    <button id="erase-cookie-btn">刪除 testCookie</button>
-</section>
-</main>
-<script>
-    let cookieName = "testCookie";
-    /*
-        0
-        此檔案已外連 cookie.js 
-        可以直接使用:
-        setCookie()
-        getCookie()
-        eraseCookie()
 
-        使用 cookie 時需要在 local server 環境, 因為 cookie 是根據 url 而設的
-        你的 VS code 安裝 "Live Server" 外掛來開啟你的檔案即可
-    */
-    /*
-        1.
-        setCookie(name, value, days)
-        name: cookie 的名稱
-        value: cookie 的值, 必須是字串
-        days: cookie 的壽命, 或沒指名則會在關掉瀏覽器清除 cookie
-    */
-    /* 
-        2.
-        getCookie(name)
-        name: cookie 的名稱
-    */
-    /* 
-        3.
-        eraseCookie(name)
-        name: cookie 的名稱
-    */
-</script>
+<body>
+    <main>
+        <section id="example-info" class="center">
+            <h1 id="example-title" class="section-title">Cookie</h1>
+            <p id="example-filename">ch05_ex13_cookie.html</p>
+        </section>
+        <section>
+            <p class="section-body">使用 cookie 時需要在 local server 環境, 因為 cookie 是根據 url 而設的。在 VS code 中安裝 "Live Server"
+                外掛來開啟你的檔案即可</p>
+            <div class="section-body">
+                <button id="set-cookie-btn">儲存 cookie</button>
+                <button id="get-cookie-btn">印出 cookie</button>
+                <button id="erase-cookie-btn">刪除 cookie</button>
+            </div>
+        </section>
+    </main>
+    <script>
+        let setCookieBtn = document.getElementById('set-cookie-btn');
+        let getCookieBtn = document.getElementById('get-cookie-btn');
+        let eraseCookieBtn = document.getElementById('erase-cookie-btn');
+        /*
+            0
+            此檔案已外連 cookie.js 
+            可以直接使用:
+            setCookie()
+            getCookie()
+            eraseCookie()
+    
+            以上個函式都是網路上別人寫好的, 並非 javascript 的預設函式或方法
+            使用 cookie 時需要在 local server 環境, 因為 cookie 是根據 url 而設的
+            在 VS code 中安裝 "Live Server" 外掛來開啟你的檔案即可
+        */
+        let cookieName = "testCookie";
+        let data = "測試 cookie";
+        /* 
+            如果要儲存的資料是陣列或物件, 我們會用 JSON.stringify() 來將資料字串化,
+            如此一來既能保存物件不變成 [Object object], 
+            要將資料還原成陣列或物件時也可以直接用 JSON.parse() 來達成
+        */
+        // let data_array = [1, 2, 3]; 
+        let data_obj = { "a": 1, "b": 2, "c": 3 };
+        // console.log('' + data_obj);
+        // console.log(JSON.stringify(data_obj));
+        let a = JSON.stringify(data_obj);
+
+        /*
+            1.
+            setCookie(name, value, days)
+            name: cookie 的名稱
+            value: cookie 的值, 必須是字串
+            days: cookie 的壽命, 或沒指名則會在關掉瀏覽器清除 cookie
+        */
+        setCookieBtn.addEventListener('click', function () {
+            setCookie(cookieName, a);
+        });
+
+        /* 
+            2.
+            getCookie(name)
+            name: cookie 的名稱
+        */
+        getCookieBtn.addEventListener('click', function () {
+            // let c = getCookie(cookieName);
+            let c = JSON.parse(a);
+            console.log(getCookie(cookieName))
+            console.log(c);
+        });
+
+        /* 
+            3.
+            eraseCookie(name)
+            name: cookie 的名稱
+        */
+        eraseCookieBtn.addEventListener('click', function () {
+            eraseCookie(cookieName);
+        });
+    </script>
 </body>
+
 </html>

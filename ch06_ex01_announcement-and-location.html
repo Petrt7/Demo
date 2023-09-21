@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>BOM: location 跟 alert, confirm, prompt</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="_assets/css/main.css">
+</head>
+
+<body>
+	<main>
+		<section id="example-info" class="center">
+			<h1 id="example-title" class="section-title">BOM: location 跟 alert, confirm, prompt</h1>
+			<p id="example-filename">ch06_ex01_announcement-and-location.html</p>
+		</section>
+		<section>
+			<p id="message" class="section-body">歡迎!</p>
+		</section>
+	</main>
+	<script>
+		/*
+			1.
+			alert("message")
+			在小視窗顯示 message, 在使用者確認前 javascirpt 會暫停執行
+		*/
+		// alert("alert: 在小視窗訊息, 在使用者確認前 javascirpt 會暫停執行");
+
+		/*
+			2.
+			confirm("message")
+			在小視窗顯示 message, 並讓使用者選擇"確認"或"取消", 依使用者的選擇回傳 true 或 false
+			在使用者選擇前 javascirpt 會暫停執行
+		*/
+		// let confirmResponse = confirm("confirm: 您是否已年滿十八歲?");
+		// if (!confirmResponse) {
+		// 	location.href = "ch06_ex01_under18.html";
+		// }
+
+		/*
+			3.
+			prompt("message")
+			在小視窗顯示 message, 並讓使用者輸入回應並回傳此回應
+			在使用者輸入回應前 javascirpt 會暫停執行
+		*/
+		let name = prompt("prompt: 請問您的大名是?");
+		name = name || '訪客';
+		let sMessage = document.getElementById("message");
+		sMessage.innerText = `歡迎, ${name}!`;
+		// sMessage.innerText = "歡迎, " + name + '!';
+	</script>
+</body>
+
+</html>

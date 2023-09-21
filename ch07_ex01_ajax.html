@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>AJAX</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="_assets/css/main.css">
+</head>
+
+<body>
+    <main>
+        <section id="example-info" class="center">
+            <h1 id="example-title" class="section-title">AJAX</h1>
+            <p id="example-filename">ch07_ex01_ajax.html</p>
+        </section>
+        <section>
+            <button id="submit-button">提交 POST request</button>
+        </section>
+    </main>
+    <script>
+        /*
+            1. 
+            以下為發出 GET 請求的範例
+        */
+        // let request = new XMLHttpRequest();
+        // request.addEventListener('readystatechange', function () {
+        //     if (request.readyState == 4) {
+        //         if (request.status === 200) {
+        //             // request 成功, 開始處理 response
+        //             console.log("request 成功, 開始處理 response");
+        //             let json = JSON.parse(request.responseText); // request.responseText 也有可能不是 JSON 的形式, 這取決於撰寫 API 的人怎麼想
+        //             console.log(json);
+        //         } else {
+        //             // request 失敗
+        //             // 可能是 404 (Not Found) 或 
+        //             // 500 (Internal Server Error) 等原因
+        //             console.log(request.responseText);
+        //         }
+        //     }
+        //     else {
+        //         // readyState 可能是 1 到 3
+        //         // request 還沒完成 . . .
+        //     }
+        // });
+        // let request_url = "https://cart-handler.weihaowang.work/api/products";
+        // request.open("GET", request_url, true); // open() 還能接受第三個參數, 是用以表示這個 request 是否為 asynchronous (非同步) 的布林值, 預設為 true
+        // console.log("request.send() 前一行");
+        // request.send();
+        // console.log("request.send() 後一行");
+
+        /*
+            2.
+            以下為發出 POST 請求的範例
+        */
+        let request = new XMLHttpRequest();
+        request.addEventListener('readystatechange', function () {
+            if (request.readyState == 4) {
+                if (request.status === 200) {
+                    // request 成功, 開始處理 response
+                    console.log("request 成功, 開始處理 response");
+                    let json = JSON.parse(request.responseText); // request.responseText 也有可能不是 JSON 的形式, 這取決於撰寫 API 的人怎麼想
+                    console.log(json);
+                } else {
+                    // request 失敗
+                    // 可能是 404 (Not Found) 或
+                    // 500 (Internal Server Error) 等原因
+                    console.log(request.responseText);
+                }
+            }
+            else {
+                // readyState 可能是 1 到 3
+                // request 還沒完成 . . .
+            }
+        });
+        let request_url = "https://cart-handler.weihaowang.work/api/cartHandler";
+        let data = {
+            'items': [1, 2, 3],
+            'subtotal': 321,
+            'token': 'eec1e2cdb3eef9204a8ee7df511baad619d701c268a101f9bc44c7a97276eead'
+        };
+        data = JSON.stringify(data);
+        request.open("POST", request_url, false); // open() 還能接受第三個參數, 是用以表示這個 request 是否為 asynchronous (非同步) 的布林值, 預設為 true
+        request.setRequestHeader('Content-type', 'application/json');
+        let submitButton = document.getElementById('submit-button');
+        submitButton.addEventListener('click', function () {
+            request.send(data);
+        });
+    </script>
+</body>
+
+</html>
