@@ -2,6 +2,10 @@
             商城範例
         */
 let shop = {
+    'searchItems': [],
+    'inputText': null,
+    'search': null,
+    'searchButton': null,
     'allProducts': [],
     'addToCartButtons': [], // 由於此按鈕現在是被 js 加到 HTML 中的, 稍後在 getElements() 中再選擇
 
@@ -39,6 +43,7 @@ let shop = {
                 this.updateCart(productsInCookie[i]);
             }
         }
+        this.visible();
 
     },
     'renderElements': function () {
@@ -64,6 +69,8 @@ let shop = {
         this.cartAmount = document.getElementById("cart-amount");
         this.cartSubtotal = document.getElementById("cart-subtotal");
         this.checkoutButton = document.getElementById("checkout-button");
+        this.search = document.getElementById("search");
+        this.searchButton = document.getElementById("visible");
     },
     'addListeners': function () {
         /*
@@ -177,5 +184,39 @@ let shop = {
         }
         data = JSON.stringify(data);
         request.send(data);
+    },
+    'visible': function () {
+
+        this.searchButton.addEventListener("click", () => {
+
+            this.searchItems = [];
+            for (let i = 0; i < this.allProducts.length; i++) {
+
+                console.log(this.search.value);
+                if (this.allProducts[i].title.match(this.search.value)) {
+                    this.searchItems.push(this.allProducts[i]);
+                    // console.log(this.allProducts[i]);
+                }
+            }
+            shop.productsContainer.innerHTML = ``;
+            shop.updateView(this.searchItems);
+        })
+    },
+    'updateView': function (productsInCookie) {
+        // this.fetchProducts();
+        this.getElements();
+        // this.renderElements();
+        this.addListeners();
+        for (let i = 0; i < this.searchItems.length; i++) {
+            let p = this.searchItems[i];
+            this.productsContainer.innerHTML += `<div class="product" id="product-` + (i + 1) + `">
+                            <div class="product-thumbnail-wrapper"><img class="product-thumbnail" src="` + p.thumbnail + `"></div>
+                            <div class="product-name">` + p.title + `</div>
+                            <div class="product-price-wrapper"><span class="product-price">`+ p.price + `</span> 元</div>
+                            <input type="text" name="number" id="number-`+ (i + 1) + `">         
+                            <button class="add-to-cart-button" productId = "`+ p.id + `">加入購物車</button>
+                        </div>`
+        }
+
     }
 }
