@@ -43,7 +43,6 @@ let shop = {
                 this.updateCart(productsInCookie[i]);
             }
         }
-        this.visible();
 
     },
     'renderElements': function () {
@@ -100,10 +99,25 @@ let shop = {
             })
         }
 
+        this.searchButton.addEventListener("click", () => {
+
+            this.searchItems = [];
+            for (let i = 0; i < this.allProducts.length; i++) {
+
+                console.log(this.search.value);
+                if (this.allProducts[i].title.match(this.search.value)) {
+                    this.searchItems.push(this.allProducts[i]);
+                    // console.log(this.allProducts[i]);
+                }
+            }
+            shop.productsContainer.innerHTML = ``;
+            shop.updateView(this.searchItems);
+        })
+
 
     },
     'updateCart': function (p_id) {
-        console.log("updateCart()");
+        // console.log("updateCart()");
 
         for (let i = 0; i < this.allProducts.length; i++) {
             if (this.allProducts[i].id == p_id) {
@@ -185,24 +199,8 @@ let shop = {
         data = JSON.stringify(data);
         request.send(data);
     },
-    'visible': function () {
 
-        this.searchButton.addEventListener("click", () => {
-
-            this.searchItems = [];
-            for (let i = 0; i < this.allProducts.length; i++) {
-
-                console.log(this.search.value);
-                if (this.allProducts[i].title.match(this.search.value)) {
-                    this.searchItems.push(this.allProducts[i]);
-                    // console.log(this.allProducts[i]);
-                }
-            }
-            shop.productsContainer.innerHTML = ``;
-            shop.updateView(this.searchItems);
-        })
-    },
-    'updateView': function (productsInCookie) {
+    'updateView': function () {
         this.fetchProducts();
         this.getElements();
         for (let i = 0; i < this.searchItems.length; i++) {
@@ -216,5 +214,7 @@ let shop = {
                         </div>`
         }
 
+
     }
+
 }
