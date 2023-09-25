@@ -203,10 +203,8 @@ let shop = {
         })
     },
     'updateView': function (productsInCookie) {
-        // this.fetchProducts();
+        this.fetchProducts();
         this.getElements();
-        // this.renderElements();
-        this.addListeners();
         for (let i = 0; i < this.searchItems.length; i++) {
             let p = this.searchItems[i];
             this.productsContainer.innerHTML += `<div class="product" id="product-` + (i + 1) + `">
